@@ -444,6 +444,88 @@ main {
     line-height: 1.5;
 }
 
+/* Publications Section */
+.publications-years {
+    margin-top: 2rem;
+}
+
+.year-section {
+    margin-bottom: 1.5rem;
+    background: var(--secondary-bg);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.year-section:hover {
+    border-color: var(--accent-gold);
+}
+
+.year-header {
+    padding: 1.5rem 2rem;
+    background: var(--secondary-bg);
+    color: var(--accent-gold);
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+}
+
+.year-header::-webkit-details-marker {
+    display: none;
+}
+
+.year-header::after {
+    content: '▼';
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+details[open] .year-header::after {
+    transform: rotate(180deg);
+}
+
+.year-header:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.year-content {
+    padding: 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.publication-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.publication-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.pub-title {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.pub-authors {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
 /* Cards */
 .card {
     background: var(--secondary-bg);
