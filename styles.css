@@ -271,7 +271,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 4rem;
 }
 
@@ -284,10 +284,15 @@ main {
 
 .about-image {
     position: relative;
-    aspect-ratio: 1;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    aspect-ratio: 3/4;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 120px;
 }
 
 .about-image::before {
@@ -297,12 +302,61 @@ main {
     border: 2px solid var(--accent-gold);
     border-radius: 8px;
     opacity: 0.5;
+    z-index: 1;
 }
 
 .about-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+}
+
+/* New About Layout with Flowing Text */
+.about-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-bio-section {
+    position: relative;
+}
+
+.about-image-float {
+    float: right;
+    width: 400px;
+    margin: 0 0 2rem 3rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.about-image-float::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--accent-gold);
+    border-radius: 8px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.about-image-float img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-text-flow {
+    text-align: justify;
+}
+
+.about-text-flow p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
 }
 
 /* Grid Layouts */
@@ -540,6 +594,12 @@ footer p {
 
     .about-content {
         grid-template-columns: 1fr;
+    }
+
+    .about-image-float {
+        float: none;
+        width: 100%;
+        margin: 0 0 2rem 0;
     }
 
     main {
