@@ -1,11 +1,11 @@
 :root {
-    --primary-bg: #1a1612;
-    --secondary-bg: #2d2620;
-    --accent-gold: #d4af37;
-    --accent-copper: #b87333;
-    --text-primary: #f5f5f0;
-    --text-secondary: #c4b5a0;
-    --overlay: rgba(26, 22, 18, 0.85);
+    --primary-bg: #0d3d3d;
+    --secondary-bg: #1a5555;
+    --accent-gold: #4dd0e1;
+    --accent-copper: #26c6da;
+    --text-primary: #ffffff;
+    --text-secondary: #b0e0e6;
+    --overlay: rgba(13, 61, 61, 0.85);
 }
 
 * {
