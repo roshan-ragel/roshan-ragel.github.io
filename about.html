@@ -9,6 +9,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for publications */
+        .pub-venue {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .pub-doi {
+            color: var(--text-secondary);
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .pub-doi a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .pub-doi a:hover {
+            opacity: 0.8;
+        }
+        
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .pub-link {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .pub-link:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+        }
+        
+        .publication-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent-gold);
+        }
+    </style>
 </head>
 <body class="about-page">
     <!-- Navigation -->
@@ -279,10 +336,28 @@
                     <summary class="year-header">2025</summary>
                     <div class="year-content">
                         <div class="publication-item">
-                            <p class="pub-title">Publication titles will be added here</p>
-                            <p class="pub-authors">Authors, Conference/Journal Name, Year</p>
+                            <p class="pub-title">A Comparative Study on Generalized Automated Medical Image Segmentation for Dataset Building</p>
+                            <p class="pub-authors">Nishani Kasineshan, Vithurshini Subramanieam, Thulasiyan Yogeswaran, Sashini Liyanage, Isuri Devindi, Roshan G. Ragel, Vajira Thambawita, Isuru Nawinne</p>
+                            <p class="pub-venue">2025 5th International Conference on Advanced Research in Computing (ICARC), 2025</p>
+                            <p class="pub-doi">DOI: <a href="https://doi.org/10.1109/ICARC64760.2025.10963209" target="_blank">10.1109/ICARC64760.2025.10963209</a></p>
+                            <div class="pub-links">
+                                <a href="#" class="pub-link">Presentation</a>
+                                <a href="#" class="pub-link">Project</a>
+                                <a href="#" class="pub-link">Codebase</a>
+                            </div>
                         </div>
-                        <!-- Add more 2025 publications as needed -->
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Simultaneous Localization and Mapping with Cost Effective Sensors</p>
+                            <p class="pub-authors">Dinuka Mudalige, Nipun Dharmarathne, Yojith Jayarathna, Nuwan Jaliyagoda, Akila Karunanayake, Roshan Ragel, Isuru Nawinne</p>
+                            <p class="pub-venue">2025 International Research Conference on Smart Computing and Systems Engineering (SCSE), 2025</p>
+                            <p class="pub-doi">DOI: <a href="https://doi.org/10.1109/SCSE65633.2025.11030968" target="_blank">10.1109/SCSE65633.2025.11030968</a></p>
+                            <div class="pub-links">
+                                <a href="#" class="pub-link">Presentation</a>
+                                <a href="#" class="pub-link">Project</a>
+                                <a href="#" class="pub-link">Codebase</a>
+                            </div>
+                        </div>
                     </div>
                 </details>
 
