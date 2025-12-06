@@ -9,42 +9,222 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
+        body {
+            background: linear-gradient(135deg, #1a4d4d 0%, #2d7a7a 50%, #3d9999 100%);
+            min-height: 100vh;
+        }
+
+        .page-header {
+            background: transparent;
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+        }
+
+        main {
+            padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .header-text {
-            flex: 1;
-        }
-
-        .header-image {
-            flex: 0 0 400px;
-            max-width: 400px;
-        }
-
-        .header-image img {
-            width: 100%;
-            height: auto;
+        .podcast-card {
+            background: white;
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .podcast-artwork {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .podcast-info h2 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a4d4d;
+            margin-bottom: 1rem;
+        }
+
+        .podcast-info p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .podcast-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .podcast-links a {
+            color: #2d7a7a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .podcast-links a:hover {
+            color: #1a4d4d;
+            text-decoration: underline;
+        }
+
+        .episodes-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .episodes-section h2 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a4d4d;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 1rem;
+        }
+
+        .episode-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .episode-item:last-child {
+            border-bottom: none;
+        }
+
+        .episode-item h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a4d4d;
+            margin-bottom: 0.5rem;
+        }
+
+        .episode-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .episode-item p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .episode-item a {
+            color: #2d7a7a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .episode-item a:hover {
+            text-decoration: underline;
+        }
+
+        .video-embed {
+            margin-top: 2rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-embed h2 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a4d4d;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 968px) {
+            .podcast-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .podcast-artwork {
+                max-width: 400px;
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 2rem;
+            .page-header h1 {
+                font-size: 2rem;
             }
 
-            .header-image {
-                flex: 0 0 auto;
-                max-width: 100%;
-                width: 100%;
+            main {
+                padding: 1rem;
             }
+
+            .podcast-card {
+                padding: 1.5rem;
+            }
+
+            .episodes-section {
+                padding: 1.5rem;
+            }
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: white;
+        }
+
+        nav a:hover {
+            color: #3d9999;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            color: white;
         }
     </style>
 </head>
@@ -67,109 +247,115 @@
 
     <!-- Page Header -->
     <header class="page-header">
-        <div class="header-content">
-            <div class="header-text">
-                <h1>Podcasts</h1>
-                <p>Conversations on Technology and Education</p>
-            </div>
-            <div class="header-image">
-                <img src="podcast.png" alt="Roshan G. Ragel speaking at a podcast recording">
-            </div>
-        </div>
+        <h1>Podcasts</h1>
     </header>
 
     <!-- Main Content -->
     <main>
-        <div class="content-section fade-in">
+        <!-- Featured Podcast Series -->
+        <div class="podcast-card">
+            <img src="podcast.png" alt="Podcast Artwork" class="podcast-artwork">
+            <div class="podcast-info">
+                <h2>Tech & Education Conversations</h2>
+                <p>
+                    This podcast series features in-depth conversations about technology, education, and innovation. 
+                    Each episode explores the intersection of computer engineering, teaching methodologies, and the 
+                    future of education in Sri Lanka and beyond. Join us for candid discussions with educators, 
+                    researchers, and industry leaders who are shaping the next generation of engineers.
+                </p>
+                <p>
+                    You can listen to the podcast on 
+                    <span class="podcast-links">
+                        <a href="#" target="_blank">Apple Podcasts</a>, 
+                        <a href="#" target="_blank">Google Podcasts</a>, 
+                        <a href="#" target="_blank">Spotify</a>, and 
+                        <a href="#" target="_blank">YouTube</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Featured Video -->
+        <div class="video-embed">
+            <h2>Featured Episode</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/ncbdImdVWb4" 
+                        allowfullscreen 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Recent Episodes -->
+        <div class="episodes-section">
             <h2>Recent Episodes</h2>
-            <div class="list-item">
+            
+            <div class="episode-item">
                 <h3>The Future of Computer Engineering Education</h3>
-                <p class="date">Tech Talk Podcast · Episode 156 · December 2024</p>
+                <p class="episode-meta">Tech Talk Podcast · Episode 156 · December 2024</p>
                 <p>
                     A deep dive into innovative teaching methodologies and the evolution of engineering 
                     education in the 21st century. Discussing how AI, hands-on projects, and collaborative 
                     learning are transforming how we prepare the next generation of engineers.
                 </p>
-                <p><a href="#" class="resource-link">Listen Now →</a></p>
+                <a href="#">Listen Now →</a>
             </div>
 
-            <div class="list-item">
+            <div class="episode-item">
                 <h3>Embedded Systems and IoT: Building Tomorrow's Infrastructure</h3>
-                <p class="date">Engineering Insights · Episode 89 · November 2024</p>
+                <p class="episode-meta">Engineering Insights · Episode 89 · November 2024</p>
                 <p>
                     Exploring the intersection of embedded systems, Internet of Things, and the future of 
                     connected devices. From smart cities to industrial automation, we discuss the challenges 
                     and opportunities in this rapidly evolving field.
                 </p>
-                <p><a href="#" class="resource-link">Listen Now →</a></p>
+                <a href="#">Listen Now →</a>
             </div>
 
-            <div class="list-item">
+            <div class="episode-item">
                 <h3>Research Innovation in Sri Lankan Universities</h3>
-                <p class="date">Academic Frontiers · Episode 42 · October 2024</p>
+                <p class="episode-meta">Academic Frontiers · Episode 42 · October 2024</p>
                 <p>
                     Discussing the landscape of academic research in developing regions, focusing on 
                     challenges, opportunities, and success stories from Sri Lankan higher education. 
                     How can universities in emerging economies compete on the global stage?
                 </p>
-                <p><a href="#" class="resource-link">Listen Now →</a></p>
+                <a href="#">Listen Now →</a>
             </div>
         </div>
 
-        <div class="content-section fade-in fade-in-delay-1">
+        <!-- Guest Appearances -->
+        <div class="episodes-section">
             <h2>Guest Appearances</h2>
-            <div class="list-item">
+            
+            <div class="episode-item">
                 <h3>Hardware-Software Co-Design Strategies</h3>
-                <p class="date">The Computer Architecture Show · September 2024</p>
+                <p class="episode-meta">The Computer Architecture Show · September 2024</p>
                 <p>
                     Sharing insights on integrated approaches to system design, discussing real-world 
                     applications and the importance of breaking down silos between hardware and software teams.
                 </p>
-                <p><a href="#" class="resource-link">Listen Now →</a></p>
+                <a href="#">Listen Now →</a>
             </div>
 
-            <div class="list-item">
+            <div class="episode-item">
                 <h3>Teaching Computer Science in the Age of AI</h3>
-                <p class="date">Education Revolution Podcast · August 2024</p>
+                <p class="episode-meta">Education Revolution Podcast · August 2024</p>
                 <p>
                     How should computer science education adapt to the rise of AI? Exploring curriculum 
                     changes, new skill requirements, and the balance between fundamentals and emerging technologies.
                 </p>
-                <p><a href="#" class="resource-link">Listen Now →</a></p>
+                <a href="#">Listen Now →</a>
             </div>
 
-            <div class="list-item">
+            <div class="episode-item">
                 <h3>Bridging Industry and Academia</h3>
-                <p class="date">Industry Connect · July 2024</p>
+                <p class="episode-meta">Industry Connect · July 2024</p>
                 <p>
                     Discussion on strengthening partnerships between universities and technology companies, 
                     ensuring students gain relevant skills while contributing to cutting-edge research and development.
                 </p>
-                <p><a href="#" class="resource-link">Listen Now →</a></p>
-            </div>
-        </div>
-
-        <div class="content-section fade-in fade-in-delay-2">
-            <h2>Podcast Series</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Engineering Education Today</h3>
-                    <p class="meta">Monthly Series · 2024-Present</p>
-                    <p>
-                        A monthly podcast exploring the latest trends, challenges, and innovations in 
-                        engineering education, featuring conversations with educators, students, and industry leaders.
-                    </p>
-                    <p><a href="#" class="resource-link">Subscribe →</a></p>
-                </div>
-                <div class="card">
-                    <h3>Tech Talk Sri Lanka</h3>
-                    <p class="meta">Bi-weekly Series · 2023-Present</p>
-                    <p>
-                        Highlighting technology innovations, research breakthroughs, and startup stories 
-                        from Sri Lanka's growing tech ecosystem.
-                    </p>
-                    <p><a href="#" class="resource-link">Subscribe →</a></p>
-                </div>
+                <a href="#">Listen Now →</a>
             </div>
         </div>
     </main>
