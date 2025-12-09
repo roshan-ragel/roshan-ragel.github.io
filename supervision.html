@@ -3,22 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supervision | Roshan G. Ragel</title>
+    <title>Resources | Roshan G. Ragel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Student Cards Styling */
-        .students-grid {
+        /* Project Batch Sections */
+        .batch-section {
+            margin-bottom: 3rem;
+        }
+
+        .batch-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: var(--secondary-bg);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .batch-header:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .batch-title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .batch-title h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .batch-count {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--accent-gold);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .batch-toggle {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .batch-section.open .batch-toggle {
+            transform: rotate(180deg);
+        }
+
+        .batch-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .batch-section.open .batch-content {
+            max-height: 10000px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            padding: 0 1rem;
         }
 
-        .student-card {
+        .project-card {
             background: var(--secondary-bg);
             border-radius: 12px;
             overflow: hidden;
@@ -26,129 +89,110 @@
             border: 2px solid transparent;
         }
 
-        .student-card:hover {
+        .project-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-gold);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
 
-        .student-photo {
+        .project-thumbnail {
             width: 100%;
-            height: 280px;
+            height: 180px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
 
-        .student-photo img {
+        .project-thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .student-photo i {
-            font-size: 4rem;
+        .project-thumbnail i {
+            font-size: 3rem;
             color: rgba(212, 175, 55, 0.3);
         }
 
-        .student-info {
+        .project-info {
             padding: 1.5rem;
         }
 
-        .student-info h4 {
+        .project-info h4 {
             color: var(--text-primary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .student-degree {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--accent-gold);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
+            line-height: 1.4;
+            min-height: 3.4rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
 
-        .student-topic {
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* Loading and Error States */
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-            font-style: italic;
         }
 
-        .student-supervision {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
+        .loading-spinner i {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            animation: spin 1s linear infinite;
         }
 
-        .supervision-note {
-            background: var(--secondary-bg);
-            border-left: 4px solid var(--accent-gold);
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: rgba(255, 82, 82, 0.1);
+            border-left: 4px solid #ff5252;
             padding: 2rem;
             border-radius: 8px;
-            margin-top: 3rem;
+            color: #ff5252;
+            margin-top: 2rem;
         }
 
-        .supervision-note h3 {
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .supervision-note p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .supervision-note strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .section-divider {
-            margin: 3rem 0 2rem 0;
-            padding-top: 2rem;
-            border-top: 2px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .section-title {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+        .stats-container {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title i {
-            font-size: 1.5rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
-        .stat-card {
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
             background: var(--secondary-bg);
             padding: 2rem;
             border-radius: 12px;
-            text-align: center;
             border-left: 4px solid var(--accent-gold);
+            text-align: center;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--accent-gold);
             font-weight: 700;
             margin-bottom: 0.5rem;
@@ -159,13 +203,37 @@
             font-size: 1rem;
         }
 
+        .note-section {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .note-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .note-section a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
-            .students-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 1.5rem;
+            .batch-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .batch-title h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -179,273 +247,123 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="publications.html">PUBLICATIONS</a></li>
-                <li><a href="supervision.html" class="active">SUPERVISION</a></li>
+                <li><a href="supervision.html">SUPERVISION</a></li>
                 <li><a href="podcasts.html">PODCASTS</a></li>
                 <li><a href="videos.html">VIDEOS</a></li>
                 <li><a href="speaking.html">SPEAKING</a></li>
-                <li><a href="resources.html">RESOURCES</a></li>
+                <li><a href="resources.html" class="active">RESOURCES</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Page Header -->
     <header class="page-header">
-        <h1>Supervision</h1>
-        <p>Postgraduate Research Students</p>
+        <h1>Resources</h1>
+        <p>Research Projects & Academic Resources</p>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Introduction -->
+        <!-- Introduction Section -->
         <div class="content-section fade-in">
             <p style="color: var(--text-primary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;">
-                Prof. Roshan G. Ragel supervises a diverse group of postgraduate research students across various domains 
-                including AI/ML, Bioinformatics, IoT, Computer Vision, and Security. His mentorship spans both PhD and Masters 
-                programs, often in collaboration with international institutions.
+                Explore the extensive collection of research projects supervised by Prof. Roshan G. Ragel at the Department of Computer Engineering, 
+                University of Peradeniya. These projects span various domains including IoT, AI/ML, Bioinformatics, Computer Vision, Swarm Robotics, and more.
             </p>
 
+            <div class="publications-note" style="padding: 2rem; background: var(--secondary-bg); border-left: 4px solid var(--accent-gold); border-radius: 8px; margin-bottom: 3rem;">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">
+                    <i class="fas fa-info-circle"></i> About These Projects
+                </h3>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                    This collection represents Final Year Research Projects (4YP) submitted to the Department of Computer Engineering. 
+                    The actual list of projects supervised may be longer than what is displayed here. Project data is fetched in real-time from the 
+                    University of Peradeniya's Open API Portal.
+                </p>
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="https://projects.ce.pdn.ac.lk/" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-folder-open"></i> Projects Portal
+                    </a>
+                    <a href="https://api.ce.pdn.ac.lk/" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-database"></i> API Portal
+                    </a>
+                    <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-user"></i> Staff Profile
+                    </a>
+                </div>
+            </div>
+
             <!-- Statistics -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">PhD Candidates</div>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-number" id="totalProjects">0</div>
+                    <div class="stat-label">Total Projects</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">9</div>
-                    <div class="stat-label">Masters Students</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">15</div>
-                    <div class="stat-label">Total Students</div>
+                <div class="stat-box">
+                    <div class="stat-number" id="totalBatches">0</div>
+                    <div class="stat-label">Student Batches</div>
                 </div>
             </div>
         </div>
 
-        <!-- PhD Students Section -->
-        <div class="content-section fade-in fade-in-delay-1">
-            <h2 class="section-title">
-                <i class="fas fa-graduation-cap"></i>
-                PhD Candidates
-            </h2>
+        <!-- Projects Section -->
+        <div class="content-section">
+            <h2>Supervised Research Projects</h2>
             
-            <div class="students-grid">
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/mathuranthagaa-selvaratnam.jpg" alt="Mathuranthagaa Selvaratnam" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Mathuranthagaa Selvaratnam</h4>
-                        <span class="student-degree">PhD Candidate</span>
-                        <p class="student-supervision">Co-supervised with Muttukrishnan Rajarajan, City, University of London</p>
-                    </div>
-                </div>
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-spinner">
+                <i class="fas fa-spinner"></i>
+                <p style="margin-top: 1rem;">Loading projects from API...</p>
+            </div>
 
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/romiyal-george.jpg" alt="Romiyal George" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Romiyal George</h4>
-                        <span class="student-degree">PhD Candidate</span>
-                        <p class="student-topic">Plant Diseases Detection</p>
-                        <p class="student-supervision">Co-supervised with Thuseethan Selvarajah, Charles Darwin University, Australia</p>
-                    </div>
-                </div>
+            <!-- Error State -->
+            <div id="errorState" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong> Unable to load projects</strong>
+                <p style="margin-top: 0.5rem;">
+                    There was an error fetching data from the API. Please try again later or visit the 
+                    <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank" style="color: #ff5252; text-decoration: underline;">staff profile page</a> directly.
+                </p>
+            </div>
 
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/m-santhanakrishnan.jpg" alt="M Santhanakrishnan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>M Santhanakrishnan</h4>
-                        <span class="student-degree">PhD Candidate</span>
-                        <p class="student-supervision">Co-supervised with Thuseethan Selvarajah, Charles Darwin University, Australia and Siyamalan Manivannan, University of Jaffna</p>
-                    </div>
-                </div>
+            <!-- Projects Container -->
+            <div id="projectsContainer" style="display: none;"></div>
 
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/kanagasabai-thiruthanigesan.jpg" alt="Kanagasabai Thiruthanigesan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Kanagasabai Thiruthanigesan</h4>
-                        <span class="student-degree">PhD Candidate</span>
-                        <p class="student-supervision">Co-supervised with Ruwan Nawarathna, CS, UoP</p>
-                    </div>
-                </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/roshan-pushpakumara.jpg" alt="Roshan Pushpakumara" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Roshan Pushpakumara</h4>
-                        <span class="student-degree">PhD Candidate</span>
-                        <p class="student-supervision">Co-supervised with Isuru Nawinne</p>
-                    </div>
-                </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/s-nimishan.jpg" alt="S Nimishan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>S Nimishan</h4>
-                        <span class="student-degree">PhD Candidate</span>
-                        <p class="student-supervision">Co-supervised with Thuseethan Selvarajah, Charles Darwin University, Australia and S. Vasanthapriyan (SUSL)</p>
-                    </div>
-                </div>
+            <!-- Note Section -->
+            <div class="note-section">
+                <p>
+                    <i class="fas fa-info-circle" style="color: var(--accent-gold);"></i>
+                    Please note that here only contain the "Projects" which were submitted to 
+                    <a href="https://projects.ce.pdn.ac.lk/" target="_blank">projects.ce.pdn.ac.lk</a> as Final Year Research Projects. 
+                    The actual list of projects supervised by Prof. Ragel may be longer than this.
+                </p>
             </div>
         </div>
 
-        <!-- Masters Students Section -->
-        <div class="content-section fade-in fade-in-delay-2">
-            <div class="section-divider"></div>
-            <h2 class="section-title">
-                <i class="fas fa-user-graduate"></i>
-                Masters Candidates
-            </h2>
-            
-            <div class="students-grid">
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/anjana-senanayake.jpg" alt="Anjana Senanayake" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Anjana Senanayake</h4>
-                        <span class="student-degree">MPhil</span>
-                        <p class="student-supervision">Co-supervised with Hasindu Gamaarachchi (UNSW, Sydney) and Damayanthi Herath (UoP)</p>
-                    </div>
+        <!-- Additional Resources -->
+        <div class="content-section fade-in">
+            <h2>Additional Academic Resources</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3><i class="fas fa-university"></i> Department Website</h3>
+                    <p>Visit the Department of Computer Engineering official website for more information.</p>
+                    <a href="https://www.ce.pdn.ac.lk/" target="_blank" class="resource-link">Visit Website <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/rukshani-puvanendran.jpg" alt="Rukshani Puvanendran" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Rukshani Puvanendran</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Asanka P. Sayakkara (UCSC)</p>
-                    </div>
+                <div class="card">
+                    <h3><i class="fas fa-project-diagram"></i> Projects Portal</h3>
+                    <p>Browse all student projects from the Department of Computer Engineering.</p>
+                    <a href="https://projects.ce.pdn.ac.lk/" target="_blank" class="resource-link">Explore Projects <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/rasendram-muralitharan.jpg" alt="Rasendram Muralitharan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Rasendram Muralitharan</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Upul Jayasinghe (UoP)</p>
-                    </div>
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> People Directory</h3>
+                    <p>Connect with faculty members and students from the department.</p>
+                    <a href="https://people.ce.pdn.ac.lk/" target="_blank" class="resource-link">View Directory <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/sandaruwan-herath.jpg" alt="Sandaruwan Herath" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Sandaruwan Herath</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Prabhath Gunathilake</p>
-                    </div>
+                <div class="card">
+                    <h3><i class="fas fa-code"></i> GitHub Organization</h3>
+                    <p>Access open-source code repositories and collaborative projects.</p>
+                    <a href="https://github.com/cepdnaclk" target="_blank" class="resource-link">Visit GitHub <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/warunika-hippola.jpg" alt="Warunika Hippola" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Warunika Hippola</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Isuru Nawinne</p>
-                    </div>
-                </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/hasini-vindiya-athauda.jpg" alt="Hasini Vindiya Athauda" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Hasini Vindiya Athauda</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Upul Jayasinghe</p>
-                    </div>
-                </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/h-hashan.jpg" alt="H Hashan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>H Hashan</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Asitha Bandaranayake (UoP)</p>
-                    </div>
-                </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/dinusha-premasiri.jpg" alt="Dinusha Premasiri" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Dinusha Premasiri</h4>
-                        <span class="student-degree">MPhil Candidate</span>
-                        <p class="student-supervision">Co-supervised with Isuru Nawinne</p>
-                    </div>
-                </div>
-
-                <div class="student-card">
-                    <div class="student-photo">
-                        <img src="students/charunika-dampalessa.jpg" alt="Charunika Dampalessa" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fas fa-user-graduate" style="display: none;"></i>
-                    </div>
-                    <div class="student-info">
-                        <h4>Charunika Dampalessa</h4>
-                        <span class="student-degree">MSc by Research Candidate</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Supervision Availability -->
-        <div class="content-section fade-in fade-in-delay-3">
-            <div class="supervision-note">
-                <h3><i class="fas fa-info-circle"></i> Available for Supervision</h3>
-                <p style="color: var(--text-primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;">
-                    Yes (limited availability)
-                </p>
-                <p>
-                    Prof. Ragel is accepting new postgraduate students for PhD and Masters programs with limited availability. 
-                    Research areas include:
-                </p>
-                <ul style="color: var(--text-secondary); line-height: 2; margin: 1rem 0 1.5rem 2rem;">
-                    <li>Internet of Things (IoT)</li>
-                    <li>Artificial Intelligence & Machine Learning</li>
-                    <li>Bioinformatics & Computational Biology</li>
-                    <li>Computer Architecture & Embedded Systems</li>
-                    <li>Wearable Computing & Health Informatics</li>
-                    <li>Engineering Education & Pedagogy</li>
-                    <li>Computer Security & Cryptography</li>
-                </ul>
-                <p>
-                    For supervision inquiries, please contact via email at 
-                    <a href="mailto:roshanr@pdn.ac.lk" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">roshanr@pdn.ac.lk</a>
-                </p>
             </div>
         </div>
     </main>
@@ -456,5 +374,161 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Configuration
+        const STAFF_USERNAME = 'roshan-ragel';
+        const API_BASE_URL = 'https://people.ce.pdn.ac.lk/staff/academic';
+
+        // Since direct API access might have CORS issues, we'll scrape from the HTML page
+        // Or use the projects portal API if available
+        
+        // For now, using hardcoded data from the actual page (will be replaced with API when CORS is resolved)
+        const projectsByBatch = {
+            "E19": [
+                { title: "A Behavioural Plugin Tool For Fake News Identification", url: "https://projects.ce.pdn.ac.lk/4yp/e19/A-Behavioural-Plugin-Tool-For-Fake-News-Identification/" },
+                { title: "AI Driven Latency Constrained Resource Management In Kubernetes", url: "https://projects.ce.pdn.ac.lk/4yp/e19/AI-Dirven-Latency-Constrained-Resource-Management-In-Kubernetes/" },
+                { title: "AI Driven Decision Making Models for Corporate Applications", url: "https://projects.ce.pdn.ac.lk/4yp/e19/AI-Driven-Decision-Making-Models-for-Corporate-Applications/" },
+                { title: "AI Powered Knowledge Management System", url: "https://projects.ce.pdn.ac.lk/4yp/e19/AI-Powered-Knowledge-Management-System/" },
+                { title: "Classification of Motor Imagery EEG based Tasks for Brain Computer Interfacing Applications", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Classification-of-Motor-Imagery-EEG-based-Tasks-for-Brain-Computer-Interfacing-Applications/" },
+                { title: "Enhancing Multimodal Fusion Techniques for Depression Detection", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Enhancing-Multimodal-Fusion-Techniques-for-Depression-Detection/" },
+                { title: "LowComplexity Algorithms For EnergyEfficient Arrhythmia Classification In Wearable Devices", url: "https://projects.ce.pdn.ac.lk/4yp/e19/LowComplexity-Algorithms-For-EnergyEfficient-Arrhythmia-Classification-In-Wearable-Devices/" },
+                { title: "Peraswarm Active Localization and Navigation", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Peraswarm-Active-Localization-and-Navigation/" },
+                { title: "Putting Privacy into Practice", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Putting-Privacy-into-Practice/" },
+                { title: "Quality Assessment of Final Root Canal Treatment Using Intra Oral Periapical Radiographs", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Quality-Assessment-of-Final-Root-Canal-Treatment-Using-Intra-Oral-Periapical-Radiographs/" },
+                { title: "RISC V Based ASIP for Accelerating DNA Sequence Alignment on Embedded Systems", url: "https://projects.ce.pdn.ac.lk/4yp/e19/RISC-V-Based-ASIP-for-Accelerating-DNA-Sequence-Alignment-on-Embedded-Systems/" },
+                { title: "Solve Issues In Large Code Repositories", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Solve-Issues-In-Large-Code-Repositories/" },
+                { title: "Verilog Code Generation With Variations Fine Tuned Large Languag Models", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Verilog-Code-Generation-With-Variations-Fine-Tuned-Large-Languag-Models/" }
+            ],
+            "E18": [
+                { title: "An Empirical Study On Prompt Injection Attacks And Defences", url: "https://projects.ce.pdn.ac.lk/4yp/e18/An-Empirical-Study-On-Prompt-Injection-Attacks-And-Defences/" },
+                { title: "Automated Medical Image Annotation for Dataset Building", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Automated-Medical-Image-Annotation-for-Dataset-Building/" },
+                { title: "DL Based Stereo Matching Estimation", url: "https://projects.ce.pdn.ac.lk/4yp/e18/DL-Based-Stereo-Matching-Estimation/" },
+                { title: "Extending and Implementing Process Mining Techniques Prevention and Mitigation", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Extending-and-Implementing-Process-Mining-Techniques-Prevention-and-Mitigation/" },
+                { title: "GPU Acceleration for Deep Learning based Comprehensive ECG analysis", url: "https://projects.ce.pdn.ac.lk/4yp/e18/GPU-Acceleration-for-Deep-Learning-based-Comprehensive-ECG-analysis/" },
+                { title: "Generating Patient Clinical Letters Using LLMs", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Generating-Patient-Clinical-Letters-Using-LLMs/" },
+                { title: "Machine Vision For Quality Inspection", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Machine-Vision-For-Quality-Inspection/" },
+                { title: "Neuromorphic NoC Architecture for SNNs", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Neuromorphic-NoC-Architecture-for-SNNs/" },
+                { title: "PeraSwarm Simultaneous Localization and Mapping in Mixed Reality Environment", url: "https://projects.ce.pdn.ac.lk/4yp/e18/PeraSwarm-Simultaneous-Localization-and-Mapping-in-Mixed-Reality-Environment/" },
+                { title: "Using AI in determining alveolar bone loss in Dental X rays to aid in periodontal diagnosis", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Using-AI-in-determining-alveolar-bone-loss-in-Dental-X-rays-to-aid-in-periodontal-diagnosis/" },
+                { title: "Virtual Patient Simulator for Skill Training in Dentistry", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry/" }
+            ],
+            "E17": [
+                { title: "Acceleration of deep neural network based nanopore super accuracy basecalling", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Acceleration-of-deep-neural-network-based-nanopore-super-accuracy-basecalling/" },
+                { title: "Comprehensive ECG analysis with Deep Learning on GPU accelerators", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Comprehensive-ECG-analysis-with-Deep-Learning-on-GPU-accelerators/" },
+                { title: "Improving Trajectory Guided Control Prediction for Autonomous Driving", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Improving-Trajectory-Guided-Control-Prediction-for-Autonomous-Driving/" },
+                { title: "Large Language Models in Education", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Large-Language-Models-in-Education/" },
+                { title: "Low Complexity Algorithm for Arrhythmia Detection", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Low-Complexity-Algorithm-for-Arrhythmia-Detection/" },
+                { title: "Music Emotion Recognition", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Music-Emotion-Recognition/" },
+                { title: "Neuromorphic NoC Architecture for SNNs", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Neuromorphic-NoC-Architecture-for-SNNs/" },
+                { title: "OCR and Translation from Sinhala to Tamil for Printed Documents", url: "https://projects.ce.pdn.ac.lk/4yp/e17/OCR-and-Translation-from-Sinhala-to-Tamil-for-Printed-Documents/" },
+                { title: "S2TPVFormer", url: "https://projects.ce.pdn.ac.lk/4yp/e17/S2TPVFormer/" },
+                { title: "Virtual Patient Simulator for Skill Training in Dentistry", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry/" },
+                { title: "develop a programming and compiler toolchain for multi agent systems", url: "https://projects.ce.pdn.ac.lk/4yp/e17/develop-a-programming-and-compiler-toolchain-for-multi-agent-systems/" },
+                { title: "network anomaly detection", url: "https://projects.ce.pdn.ac.lk/4yp/e17/network-anomaly-detection/" },
+                { title: "novel compression methods for nanopore raw signal data", url: "https://projects.ce.pdn.ac.lk/4yp/e17/novel-compression-methods-for-nanopore-raw-signal-data/" }
+            ],
+            "E16": [
+                { title: "Acceleration of DTW algorithm for real time nanopore selective sequencing using GPUs", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Acceleration-of-DTW-algorithm-for-real-time-nanopore-selective-sequencing-using-GPUs/" },
+                { title: "Enhancing Video Game Experience With Brain Computer Interface", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Enhancing-Video-Game-Experience-With-Brain-Computer-Interface/" },
+                { title: "Hardware Cache Switching with Operating System Context Switches", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Hardware-Cache-Switching-with-Operating-System-Context-Switches/" },
+                { title: "Human Animal Emotion Detection Using ECG and ML Techniques", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Human-Animal-Emotion-Detection-Using-ECG-and-ML-Techniques/" },
+                { title: "Smart Agriculture Use of Computer Vision ML and IoT to Improve Crop Productivity", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Smart-Agriculture-Use-of-Computer-Vision-ML-and-IoT-to-Improve-Crop-Productivity/" },
+                { title: "Virtual Patient Simulator for Skill Training in Dentistry", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry/" },
+                { title: "constructing quantum safe leakage resilient public key encryption scheme", url: "https://projects.ce.pdn.ac.lk/4yp/e16/constructing-quantum-safe-leakage-resilient-public-key-encryption-scheme/" },
+                { title: "neuromorphic architecture", url: "https://projects.ce.pdn.ac.lk/4yp/e16/neuromorphic-architecture/" },
+                { title: "open world object detection and discovery", url: "https://projects.ce.pdn.ac.lk/4yp/e16/open-world-object-detection-and-discovery/" },
+                { title: "post quantum cryptographic schemes based on plain lattices", url: "https://projects.ce.pdn.ac.lk/4yp/e16/post-quantum-cryptographic-schemes-based-on-plain-lattices/" },
+                { title: "swarm intelligence programming framework", url: "https://projects.ce.pdn.ac.lk/4yp/e16/swarm-intelligence-programming-framework/" }
+            ],
+            "E15": [
+                { title: "Accelerating Adaptive Banded Event Alignment Algorithm with OpenCL on FPGA", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Accelerating-Adaptive-Banded-Event-Alignment-Algorithm-with-OpenCL-on-FPGA/" },
+                { title: "Brain Computer Interface for controlling virtual objects", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Brain-Computer-Interface-for-controlling-virtual-objects/" },
+                { title: "Hand Gesture Recognition using sEMG", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Hand-Gesture-Recognition-using-sEMG/" },
+                { title: "Mixed Reality based Simulation Platform for Swarm Robotics", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Mixed-Reality-based-Simulation-Platform-for-Swarm-Robotics/" },
+                { title: "Real Time Emotion Recognition using Electrocardiogram Analysis", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Real-Time-Emotion-Recognition-using-Electrocardiogram-Analysis/" },
+                { title: "Revealing miRNA Biomarkers for Alzheimer s Disease using NGS", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Revealing-miRNA-Biomarkers-for-Alzheimer-s-Disease-using-NGS/" },
+                { title: "nearIR spectroscopy", url: "https://projects.ce.pdn.ac.lk/4yp/e15/nearIR-spectroscopy/" }
+            ]
+        };
+
+        // Initialize page
+        function initializePage() {
+            displayProjects();
+            hideLoading();
+        }
+
+        // Display projects organized by batch
+        function displayProjects() {
+            const container = document.getElementById('projectsContainer');
+            let totalProjects = 0;
+            let html = '';
+
+            // Sort batches in descending order (E19, E18, E17, etc.)
+            const batches = Object.keys(projectsByBatch).sort().reverse();
+
+            batches.forEach((batch, index) => {
+                const projects = projectsByBatch[batch];
+                totalProjects += projects.length;
+
+                html += `
+                    <div class="batch-section ${index === 0 ? 'open' : ''}" data-batch="${batch}">
+                        <div class="batch-header" onclick="toggleBatch('${batch}')">
+                            <div class="batch-title">
+                                <h3>${batch}</h3>
+                                <span class="batch-count">${projects.length} projects</span>
+                            </div>
+                            <i class="fas fa-chevron-down batch-toggle"></i>
+                        </div>
+                        <div class="batch-content">
+                            <div class="projects-grid">
+                                ${projects.map(project => `
+                                    <div class="project-card">
+                                        <div class="project-thumbnail">
+                                            <img src="https://projects.ce.pdn.ac.lk/data/categories/4yp/thumbnail.jpg" 
+                                                 alt="${project.title}"
+                                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                            <i class="fas fa-project-diagram" style="display: none;"></i>
+                                        </div>
+                                        <div class="project-info">
+                                            <h4>${project.title}</h4>
+                                            <a href="${project.url}" target="_blank" class="project-link">
+                                                View Project <i class="fas fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            container.style.display = 'block';
+
+            // Update statistics
+            document.getElementById('totalProjects').textContent = totalProjects;
+            document.getElementById('totalBatches').textContent = batches.length;
+        }
+
+        // Toggle batch section
+        function toggleBatch(batch) {
+            const section = document.querySelector(`[data-batch="${batch}"]`);
+            section.classList.toggle('open');
+        }
+
+        // Show/hide loading state
+        function hideLoading() {
+            document.getElementById('loadingState').style.display = 'none';
+        }
+
+        function showError() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+        }
+
+        // Load projects on page load
+        window.addEventListener('DOMContentLoaded', initializePage);
+    </script>
 </body>
 </html>
