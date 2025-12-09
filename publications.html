@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Roshan G. Ragel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles for publications */
+        .pub-venue {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .pub-doi {
+            color: var(--text-secondary);
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .pub-doi a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .pub-doi a:hover {
+            opacity: 0.8;
+        }
+        
+        .pub-authors a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .pub-authors a:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+        
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .pub-link {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .pub-link:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+        }
+        
+        .publication-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent-gold);
+        }
+    </style>
+</head>
+<body class="about-page">
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">Roshan G. Ragel</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="publications.html" class="active">PUBLICATIONS</a></li>
+                <li><a href="podcasts.html">PODCASTS</a></li>
+                <li><a href="videos.html">VIDEOS</a></li>
+                <li><a href="speaking.html">SPEAKING</a></li>
+                <li><a href="resources.html">RESOURCES</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Publications</h1>
+        <p>Research Output and Scholarly Contributions</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-section fade-in fade-in-delay-3">
+            <h2>Publications</h2>
+            <p style="color: #ffffff; margin-bottom: 2rem; line-height: 1.8;">
+                Prof. Ragel has co-authored over 200 peer-reviewed articles spanning multiple years of research in Computer Engineering, 
+                IoT, Bioinformatics, and related fields. For a complete publication profile, please visit:
+            </p>
+            
+            <div class="publications-note" style="padding: 2rem; background: var(--secondary-bg); border-left: 4px solid var(--accent-gold); border-radius: 8px; margin-bottom: 3rem;">
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+                    <a href="https://scholar.google.com/citations?user=UTYj8usAAAAJ&hl=en" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                        <i class="fa-brands fa-google-scholar" style="font-size: 1.3rem;"></i> Google Scholar
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Roshan-Ragel" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                        <i class="fa-brands fa-researchgate" style="font-size: 1.3rem;"></i> ResearchGate
+                    </a>
+                    <a href="https://orcid.org/0000-0002-4511-2335" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                        <i class="fa-brands fa-orcid" style="font-size: 1.3rem;"></i> ORCID
+                    </a>
+                    <a href="https://www.linkedin.com/in/roshanragel/" target="_blank" class="resource-link" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+                        <i class="fa-brands fa-linkedin" style="font-size: 1.3rem;"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="publications-years">
+                <details class="year-section">
+                    <summary class="year-header">2025</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">A Comparative Study on Generalized Automated Medical Image Segmentation for Dataset Building</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e18/245/" target="_blank">Nishani Kasineshan</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e18/340/" target="_blank">Vithurshini Subramanieam</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e18/366/" target="_blank">Thulasiyan Yogeswaran</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/" target="_blank">Sashini Liyanage</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/" target="_blank">Isuri Devindi</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G. Ragel</a>, 
+                                Vajira Thambawita, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>
+                            </p>
+                            <p class="pub-venue">2025 5th International Conference on Advanced Research in Computing (ICARC), 2025</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/10963209" target="_blank">10.1109/ICARC64760.2025.10963209</a></p>
+                            <div class="pub-links">
+                                <a href="https://docs.google.com/presentation/d/1DkLqAkhmkS3W8LeAGbo-FGcpYn9kMrSI/edit?slide=id.p1#slide=id.p1" target="_blank" class="pub-link">Presentation</a>
+                                <a href="https://projects.ce.pdn.ac.lk/4yp/e18/Automated-Medical-Image-Annotation-for-Dataset-Building/" target="_blank" class="pub-link">Project</a>
+                                <a href="https://github.com/cepdnaclk/e18-4yp-Automated-Medical-Image-Annotation-for-Dataset-Building" target="_blank" class="pub-link">Codebase</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Simultaneous Localization and Mapping with Cost Effective Sensors</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e18/227/" target="_blank">Dinuka Mudalige</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e18/077/" target="_blank">Nipun Dharmarathne</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e18/150/" target="_blank">Yojith Jayarathna</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/" target="_blank">Nuwan Jaliyagoda</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e17/154/" target="_blank">Akila Karunanayake</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>
+                            </p>
+                            <p class="pub-venue">2025 International Research Conference on Smart Computing and Systems Engineering (SCSE), 2025</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/11030968" target="_blank">10.1109/SCSE65633.2025.11030968</a></p>
+                            <div class="pub-links">
+                                <a href="https://docs.google.com/presentation/d/1Sn4Bnb49-N23yy5Edn8H73UVxVlOOfMW/edit?slide=id.p1#slide=id.p1" target="_blank" class="pub-link">Presentation</a>
+                                <a href="https://projects.ce.pdn.ac.lk/4yp/e18/PeraSwarm-Simultaneous-Localization-and-Mapping-in-Mixed-Reality-Environment/" target="_blank" class="pub-link">Project</a>
+                                <a href="https://github.com/cepdnaclk/e18-4yp-PeraSwarm-Simultaneous-Localization-and-Mapping-in-Mixed-Reality-Environment" target="_blank" class="pub-link">Codebase</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2023</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">DeepSelectNet: deep neural network based selective sequencing for oxford nanopore sequencing</p>
+                            <p class="pub-authors">
+                                Anjana Senanayake, 
+                                Hasindu Gamaarachchi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/damayanthi-herath/" target="_blank">Damayanthi Herath</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">BMC Bioinformatics, 2023</p>
+                            <p class="pub-doi">DOI: <a href="https://link.springer.com/article/10.1186/s12859-023-05151-0" target="_blank">10.1186/s12859-023-05151-0</a></p>
+                            <div class="pub-links">
+                                <a href="https://doi.org/10.1186/s12859-023-05151-0" target="_blank" class="pub-link">PDF</a>
+                                <a href="https://github.com/AnjanaSenanayake/DeepSelectNet" target="_blank" class="pub-link">Codebase</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Mixed-Reality Based Multi-Agent Robotics Framework for Artificial Swarm Intelligence Experiments</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e15/173/" target="_blank">Dilshani Karunarathna</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e15/140/" target="_blank">Nuwan Jaliyagoda</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e15/142/" target="_blank">Ganindu Jayalath</a>, 
+                                <a href="http://people.ce.pdn.ac.lk/staff/academic/janaka-alawatugoda/" target="_blank">Janaka Alawatugoda</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>
+                            </p>
+                            <p class="pub-venue">IEEE Access, 2023</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/10256101" target="_blank">10.1109/ACCESS.2023.3317434</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.youtube.com/watch?v=UxYynRS6BR0" target="_blank" class="pub-link">Presentation</a>
+                                <a href="https://projects.ce.pdn.ac.lk/4yp/e15/Mixed-Reality-based-Simulation-Platform-for-Swarm-Robotics/" target="_blank" class="pub-link">Project</a>
+                                <a href="https://github.com/Pera-Swarm" target="_blank" class="pub-link">Codebase</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2021</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">An optical physics inspired CNN approach for intrinsic image decomposition</p>
+                            <p class="pub-authors">
+                                Harshana Weligampola, 
+                                Gihan Jayatilaka, 
+                                Suren Sritharan, 
+                                Parakrama Ekanayake, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Vijitha Herath, 
+                                Roshan Godaliyadda
+                            </p>
+                            <p class="pub-venue">2021 IEEE International Conference on Image Processing (ICIP), 2021</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9506375" target="_blank">10.1109/ICIP42928.2021.9506375</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/2105.10076" target="_blank" class="pub-link">PDF Preprint</a>
+                                <a href="https://www.cs.umd.edu/~gihan/projects/fyp/icip-2021-presentation.pdf" target="_blank" class="pub-link">Presentation</a>
+                                <a href="https://projects.ce.pdn.ac.lk/4yp/e14/dark-arts-algorithms-for-low-light-image-enhancement-and-interpretation/" target="_blank" class="pub-link">Project</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Using Near-Infrared Spectroscopy for Vein Visualization</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e15/383/" target="_blank">KTB Weerasinghe</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e15/349/" target="_blank">SC Tennakoon</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e15/188/" target="_blank">KNU Kularatne</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">I Nawinne</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">R Ragel</a>, 
+                                H Jayakody
+                            </p>
+                            <p class="pub-venue">2021 10th International Conference on Information and Automation for Sustainability (ICIAfS), 2021</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9606126" target="_blank">10.1109/ICIAfS52090.2021.9606126</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Revealing MicroRNA Biomarkers for Alzheimer's Disease Using Next Generation Sequencing Data</p>
+                            <p class="pub-authors">
+                                Imalsha Dinuwanthi, 
+                                Hasini Thilakarathna, 
+                                Vidwa Sripadi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/damayanthi-herath/" target="_blank">Damayanthi Herath</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">2021 10th International Conference on Information and Automation for Sustainability (ICIAfS), 2021</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9606093" target="_blank">10.1109/ICIAfS52090.2021.9606093</a></p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2020</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">A Retinex based GAN Pipeline to Utilize Paired and Unpaired Datasets for Enhancing Low Light Images</p>
+                            <p class="pub-authors">
+                                Harshana Weligampola, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/158/" target="_blank">Gihan Jayatilaka</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/339/" target="_blank">Suren Sritharan</a>, 
+                                Roshan Goldaliyadda, 
+                                Parakrama Ekanayeka, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Vijitha Herath
+                            </p>
+                            <p class="pub-venue">MERCon, 2020</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9185373" target="_blank">10.1109/MERCon50084.2020.9185373</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/2006.15304" target="_blank" class="pub-link">PDF (Preprint)</a>
+                                <a href="https://www.cs.umd.edu/~gihan/projects/fyp/mercon-2020-presentation.pdf" target="_blank" class="pub-link">Presentation</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Genopo: a nanopore sequencing analysis toolkit for portable Android devices</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/302/" target="_blank">Hiruna Samarakoon</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/262/" target="_blank">Sanoj Punchihewa</a>, 
+                                Anjana Senanayake, 
+                                Jillian M. Hammond, 
+                                Igor Stevanovski, 
+                                James M. Ferguson, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Hasindu Gamaarachchi, 
+                                Ira W. Deveson
+                            </p>
+                            <p class="pub-venue">Communications Biology, 2020</p>
+                            <p class="pub-doi">DOI: <a href="https://www.nature.com/articles/s42003-020-01270-z" target="_blank">10.1038/s42003-020-01270-z</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.nature.com/articles/s42003-020-01270-z.pdf" target="_blank" class="pub-link">PDF</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Control channel denial-of-service attack in SDN-based networks</p>
+                            <p class="pub-authors">
+                                Shriparen Sriskandarajah, 
+                                Matthew McKague, 
+                                Ernest Foo, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G. Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/suneth-namal-karunarathna/" target="_blank">Suneth Namal Karunarathna</a>
+                            </p>
+                            <p class="pub-venue">2020 Moratuwa Engineering Research Conference (MERCon), 2020</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9185266" target="_blank">10.1109/MERCon50084.2020.9185266</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">A Programming Framework for Robot Swarms</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/065/" target="_blank">Mahendra Dassanayaka</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/028/" target="_blank">Tharuka Bandara</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/010/" target="_blank">Nadun Adikari</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">2020 Moratuwa Engineering Research Conference (MERCon), 2020</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9185206" target="_blank">10.1109/MERCon50084.2020.9185206</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Detection of Novel Biomarker Genes of Alzheimer's Disease Using Gene Expression Data</p>
+                            <p class="pub-authors">
+                                Shehan Perera, 
+                                Kaveesha Hewage, 
+                                Chamara Gunarathne, 
+                                Rajitha Navarathna, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/damayanthi-herath/" target="_blank">Damayanthi Herath</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>
+                            </p>
+                            <p class="pub-venue">2020 Moratuwa Engineering Research Conference (MERCon), 2020</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9185336" target="_blank">10.1109/MERCon50084.2020.9185336</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.researchgate.net/publication/346705332_Detection_of_Novel_Biomarker_Genes_of_Alzheimer%27s_Disease_Using_Gene_Expression_Data" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2019</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Non-contact Infant Sleep Apnea Detection</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/158/" target="_blank">Gihan Jayatilaka</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/379/" target="_blank">Harshana Weligampola</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/339/" target="_blank">Suren Sritharan</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e14/237/" target="_blank">Pankayaraj Pathmanathan</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>
+                            </p>
+                            <p class="pub-venue">IEEE International Conference on Industrial and Information Systems (ICIIS), 2019</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/9063269" target="_blank">10.1109/ICIIS47346.2019.9063269</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1910.04725" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Power-Aware High-Level Synthesis Flow for Mapping FPGA Designs</p>
+                            <p class="pub-authors">
+                                Udaree Kanewala, 
+                                Kesara Gamlath, 
+                                Hasindu Ramanayake, 
+                                Kalindu Herath, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">2019 Moratuwa Engineering Research Conference (MERCon), 2019</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/8818883" target="_blank">10.1109/MERCon.2019.8818883</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">An ensemble learning approach for electrocardiogram sensor based human emotion recognition</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e13/073/" target="_blank">Theekshana Dissanayake</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e13/274/" target="_blank">Yasitha Rajapaksha</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>
+                            </p>
+                            <p class="pub-venue">MDPI Sensors, 2019</p>
+                            <p class="pub-doi">DOI: <a href="https://www.mdpi.com/1424-8220/19/20/4495" target="_blank">10.3390/s19204495</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.mdpi.com/1424-8220/19/20/4495/pdf" target="_blank" class="pub-link">PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2018</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Visual Design Platform for Wireless Sensor Network</p>
+                            <p class="pub-authors">
+                                Rosen Silva, 
+                                Asela Dasanayaka, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/asitha-bandaranayake/" target="_blank">Asitha Bandaranayake</a>
+                            </p>
+                            <p class="pub-venue">2018 Moratuwa Engineering Research Conference (MERCon), 2018</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/8421896" target="_blank">10.1109/MERCon.2018.8421896</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.researchgate.net/publication/327517623_Visual_Design_Platform_for_Wireless_Sensor_Network" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2017</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Implementing a proven-secure and cost-effective countermeasure against the compression ratio info-leak mass exploitation (CRIME) attack</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/students/e12/009/" target="_blank">Jayamine Alupotha</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e12/269/" target="_blank">Sanduni Prasadi</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/janaka-alawatugoda/" target="_blank">Janaka Alawatugoda</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Mohamed Fawsan
+                            </p>
+                            <p class="pub-venue">2017 IEEE International Conference on Industrial and Information Systems (ICIIS), 2017</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/8300359" target="_blank">10.1109/ICIINFS.2017.8300359</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.researchgate.net/publication/323352314_Implementing_a_proven-secure_and_cost-effective_countermeasure_against_the_compression_ratio_info-leak_mass_exploitation_CRIME_attack" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2016</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Affordable real-time environment monitoring system for greenhouses</p>
+                            <p class="pub-authors">
+                                Supun Athukorala, 
+                                Irunika Weeraratne, 
+                                Dumindu Jayathilaka, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/asitha-bandaranayake/" target="_blank">Asitha Bandaranayake</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">2016 Manufacturing & Industrial Engineering Symposium (MIES), 2016</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7780261" target="_blank">10.1109/MIES.2016.7780261</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">An optimized Parallel Failure-less Aho-Corasick algorithm for DNA sequence matching</p>
+                            <p class="pub-authors">
+                                DRVLB Thambawita, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/dhammika-elkaduwe/" target="_blank">Dhammike Elkaduwe</a>
+                            </p>
+                            <p class="pub-venue">2016 IEEE International Conference on Information and Automation for Sustainability (ICIAfS), 2016</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7946533" target="_blank">10.1109/ICIAFS.2016.7946533</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1811.10498" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">To use or not to use: CPUs' cache optimization techniques on GPGPUs</p>
+                            <p class="pub-authors">
+                                DRVLB Thambawita, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/dhammika-elkaduwe/" target="_blank">Dhammike Elkaduwe</a>
+                            </p>
+                            <p class="pub-venue">2016 IEEE International Conference on Information and Automation for Sustainability (ICIAfS), 2016</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7946534" target="_blank">10.1109/ICIAFS.2016.7946534</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1810.04063" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">On implementing a client-server setting to prevent the Browser Reconnaissance and Exfiltration via Adaptive Compression of Hypertext (BREACH) attacks</p>
+                            <p class="pub-authors">
+                                Isuru Sankalpa, 
+                                Tharindu Dhanushka, 
+                                Nadeesha Amarasinghe, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/janaka-alawatugoda/" target="_blank">Janaka Alawatugoda</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">2016 Manufacturing & Industrial Engineering Symposium (MIES), 2016</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7780263" target="_blank">10.1109/MIES.2016.7780263</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Leakage-resilient storage scheme for cryptographic applications</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/janaka-alawatugoda/" target="_blank">Janaka Alawatugoda</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Danushka Eranga, 
+                                Nalaka Jayanath, 
+                                Chinthaka Somathilaka
+                            </p>
+                            <p class="pub-venue">2016 IEEE International Conference on Information and Automation for Sustainability (ICIAfS), 2016</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7946548" target="_blank">10.1109/ICIAFS.2016.7946548</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Accelerating k-nn classification algorithm using graphics processing units</p>
+                            <p class="pub-authors">
+                                S Selvaluxmiy, 
+                                <a href="https://people.ce.pdn.ac.lk/students/e10/143/" target="_blank">TN Kumara</a>, 
+                                P Keerthanan, 
+                                R Velmakivan, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">R Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/sampath-deegalla/" target="_blank">S Deegalla</a>
+                            </p>
+                            <p class="pub-venue">2016 IEEE International Conference on Information and Automation for Sustainability (ICIAfS), 2016</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7946528" target="_blank">10.1109/ICIAFS.2016.7946528</a></p>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2015</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Exploring multilevel cache hierarchies in application specific mpsocs</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru Nawinne</a>, 
+                                Haris Javaid, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                Sri Parameswaran
+                            </p>
+                            <p class="pub-venue">IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, 2015</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7123612" target="_blank">10.1109/TCAD.2015.2445736</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Performance evaluation techniques for an automatic question answering system</p>
+                            <p class="pub-authors">
+                                Tilani Gunawardena, 
+                                Nishara Pathirana, 
+                                Medhavi Lokuhetti, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/sampath-deegalla/" target="_blank">Sampath Deegalla</a>
+                            </p>
+                            <p class="pub-venue">International Journal of Machine Learning and Computing, 2015</p>
+                            <p class="pub-doi">DOI: <a href="https://www.ijml.org/index.php?m=content&c=index&a=show&catid=58&id=587" target="_blank">10.7763/IJMLC.2015.V5.523</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.ijml.org/vol5/523-C013.pdf" target="_blank" class="pub-link">PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2014</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">A structured hardware software architecture for peptide based diagnosis – Sub-string matching problem with limited tolerance</p>
+                            <p class="pub-authors">
+                                Sugandima M. Vidanagamachchi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/shirley-dewasurendra/" target="_blank">S. Devapriya Dewasurendra</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G. Ragel</a>, 
+                                Mahesan Niranjan
+                            </p>
+                            <p class="pub-venue">2014 7th International Conference on Information and Automation for Sustainability, 2014</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7069624" target="_blank">10.1109/ICIAFS.2014.7069624</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1412.7811" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">To use or not to use: Graphics processing units (GPUs) for pattern matching algorithms</p>
+                            <p class="pub-authors">
+                                DRVLB Thambawita, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/dhammika-elkaduwe/" target="_blank">Dhammika Elkaduwe</a>
+                            </p>
+                            <p class="pub-venue">7th International Conference on Information and Automation for Sustainability, 2014</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7069585" target="_blank">10.1109/ICIAFS.2014.7069585</a></p>
+                            <div class="pub-links">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/7069585" target="_blank" class="pub-link">PDF</a>
+                                <a href="https://www.researchgate.net/profile/Roshan-Ragel/publication/270222593_To_Use_or_Not_to_Use_Graphics_Processing_Units_for_Pattern_Matching_Algorithms/links/54e48fc30cf2dbf60696ea10/To-Use-or-Not-to-Use-Graphics-Processing-Units-for-Pattern-Matching-Algorithms.pdf" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Students behavioural analysis in an online learning environment using data mining</p>
+                            <p class="pub-authors">
+                                IP Ratnapala, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">RG Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/sampath-deegalla/" target="_blank">S Deegalla</a>
+                            </p>
+                            <p class="pub-venue">7th International Conference on Information and Automation for Sustainability, 2014</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/7069609" target="_blank">10.1109/ICIAFS.2014.7069609</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.researchgate.net/publication/282666458_Students_Behavioural_Analysis_in_an_Online_Learning_Environment_Using_Data_Mining" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2013</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Hardware software co-design of the Aho-Corasick algorithm: Scalable for protein identification?</p>
+                            <p class="pub-authors">
+                                S.M. Vidanagamachchi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/shirley-dewasurendra/" target="_blank">S.D. Dewasurendra</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">R.G. Ragel</a>
+                            </p>
+                            <p class="pub-venue">2013 IEEE 8th International Conference on Industrial and Information Systems, 2013</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6732003" target="_blank">10.1109/ICIInfS.2013.6732003</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/ftp/arxiv/papers/1403/1403.1317.pdf" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Hardware accelerated protein inference framework</p>
+                            <p class="pub-authors">
+                                S. M. Vidanagamachchi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/shirley-dewasurendra/" target="_blank">S. D. Dewasurendra</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">R. G. Ragel</a>
+                            </p>
+                            <p class="pub-venue">2013 IEEE 8th International Conference on Industrial and Information Systems, 2013</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6732061" target="_blank">10.1109/ICIInfS.2013.6732061</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1403.1319" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">A Study on Instruction-set Selection Using Multi-application Based Application Specific Instruction-set Processors</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G. Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                Jude Angelo Ambrose, 
+                                Sri Parameswaran
+                            </p>
+                            <p class="pub-venue">2013 26th International Conference on VLSI Design and 2013 12th International Conference on Embedded Systems, 2013</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6472605" target="_blank">10.1109/VLSID.2013.154</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.researchgate.net/publication/261501995_A_Study_on_Instruction-set_Selection_Using_Multi-application_Based_Application_Specific_Instruction-set_Processors" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">CSER: HW/SW configurable soft-error resiliency for application specific instruction-set processors</p>
+                            <p class="pub-authors">
+                                Tuo Li, 
+                                Muhammad Shafique, 
+                                Semeen Rehman, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Jude Angelo Ambrose, 
+                                Jörg Henkel, 
+                                Sri Parameswaran
+                            </p>
+                            <p class="pub-venue">2013 Design, Automation & Test in Europe Conference & Exhibition (DATE), 2013</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6513598?arnumber=6513598" target="_blank">10.7873/DATE.2013.152</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">DRMA: dynamically reconfigurable MPSoC architecture</p>
+                            <p class="pub-authors">
+                                Lawrance Zhang, 
+                                Jude Angelo Ambrose, 
+                                Jorgen Peddersen, 
+                                Sri Parameswaran, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                Kewal K. Saluja
+                            </p>
+                            <p class="pub-venue">GLSVLSI '13: Proceedings of the 23rd ACM international conference on Great lakes symposium on VLSI, 2013</p>
+                            <p class="pub-doi">DOI: <a href="https://dl.acm.org/doi/10.1145/2483028.2483101" target="_blank">10.1145/2483028.2483101</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">AntiPlag: Plagiarism detection on electronic submissions of text based assignments</p>
+                            <p class="pub-authors">
+                                MAC Jiffriya, 
+                                MAC Akmal Jahan, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/sampath-deegalla/" target="_blank">Sampath Deegalla</a>
+                            </p>
+                            <p class="pub-venue">2013 IEEE 8th International Conference on Industrial and Information Systems, 2013</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6732013" target="_blank">10.1109/ICIInfS.2013.6732013</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1403.1310" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2012</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Commentz-walter: Any better than aho-corasick for peptide identification?</p>
+                            <p class="pub-authors">
+                                SM Vidanagamachchi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/shirley-dewasurendra/" target="_blank">SD Dewasurendra</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">RG Ragel</a>, 
+                                M Niranjan
+                            </p>
+                            <p class="pub-venue">International Journal of Research in Computer Science, 2012</p>
+                            <p class="pub-doi">DOI: <a href="http://www.ijorcs.org/manuscript/id/53/doi:10.7815/ijorcs.26.2012.053/sm-vidanagamachchi/commentz-walter-any-better%20than-aho-corasick-for-peptide-identification" target="_blank">10.7815/ijorcs.26.2012.053</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.academia.edu/59971522/Commentz_Walter_Any_Better_than_Aho_Corasick_for_Peptide_Identification" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Instruction-set selection for multi-application based ASIP design: An instruction-level study</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                Angelo Ambrose
+                            </p>
+                            <p class="pub-venue">2012 IEEE 6th International Conference on Information and Automation for Sustainability, 2012</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6419895" target="_blank">10.1109/ICIAFS.2012.6419895</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1403.7291" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">DIMSim: A rapid two-level cache simulation approach for deadline-based MPSoCs</p>
+                            <p class="pub-authors">
+                                Mohammad Shihabul Haque, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                Angelo Ambrose, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                Sri Parameswaran
+                            </p>
+                            <p class="pub-venue">8th IEEE/ACM/IFIP international conference on Hardware/software codesign and system synthesis, 2012</p>
+                            <p class="pub-doi">DOI: <a href="https://dl.acm.org/doi/10.1145/2380445.2380473" target="_blank">10.1145/2380445.2380473</a></p>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Constant time encryption as a countermeasure against remote cache timing attacks</p>
+                            <p class="pub-authors">
+                                Darshana Jayasinghe, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/dhammika-elkaduwe/" target="_blank">Dhammika Elkaduwe</a>
+                            </p>
+                            <p class="pub-venue">2012 IEEE 6th International Conference on Information and Automation for Sustainability, 2012</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6419893" target="_blank">10.1109/ICIAFS.2012.6419893</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/ftp/arxiv/papers/1403/1403.7293.pdf" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Accelerating string matching for bio-computing applications on multi-core CPUs</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/damayanthi-herath/" target="_blank">Damayanthi Herath</a>, 
+                                Chathurika Lakmali, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>
+                            </p>
+                            <p class="pub-venue">2012 IEEE 7th International Conference on Industrial and Information Systems (ICIIS), 2012</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6304784" target="_blank">10.1109/ICIInfS.2012.6304784</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1403.7294" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2011</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Tile optimization for area in FPGA based hardware acceleration of peptide identification</p>
+                            <p class="pub-authors">
+                                SM Vidanagamachchi, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/shirley-dewasurendra/" target="_blank">SD Dewasurendra</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>, 
+                                M Niranjan
+                            </p>
+                            <p class="pub-venue">2011 6th International Conference on Industrial and Information Systems (ICIIS), 2011</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6038056" target="_blank">10.1109/ICIINFS.2011.6038056</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/ftp/arxiv/papers/1403/1403.7296.pdf" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <p class="pub-title">Heterogeneous processor pipeline for a product cipher application</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/isuru-nawinne/" target="_blank">Isuru B. Nawinne</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/mahanama-wickramasinghe/" target="_blank">Mahanama S. Wickramasinghe</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G. Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>
+                            </p>
+                            <p class="pub-venue">2011 6th International Conference on Industrial and Information Systems, 2011</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/6038036" target="_blank">10.1109/ICIINFS.2011.6038036</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/ftp/arxiv/papers/1403/1403.7299.pdf" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2010</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">An automatic answering system with template matching for natural language questions</p>
+                            <p class="pub-authors">
+                                Tilani Gunawardena, 
+                                Medhavi Lokuhetti, 
+                                Nishara Pathirana, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/sampath-deegalla/" target="_blank">Sampath Deegalla</a>
+                            </p>
+                            <p class="pub-venue">2010 Fifth International Conference on Information and Automation for Sustainability, 2010</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/5715686" target="_blank">10.1109/ICIAFS.2010.5715686</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.academia.edu/28403120/An_automatic_answering_system_with_template_matching_for_natural_language_questions" target="_blank" class="pub-link">PDF (Preprint)</a>
+                                <a href="https://www.academia.edu/28403120/An_automatic_answering_system_with_template_matching_for_natural_language_questions" target="_blank" class="pub-link">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2009</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Loop unrolling in multi-pipeline ASIP design</p>
+                            <p class="pub-authors">
+                                HMRDB Navarathna, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>
+                            </p>
+                            <p class="pub-venue">2009 International Conference on Industrial and Information Systems (ICIIS), 2009</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/5429845" target="_blank">10.1109/ICIINFS.2009.5429845</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/pdf/1402.0671" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2008</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">Axis2UNO: Web Services Enabled <a href="http://www.openoffice.org/" target="_blank">Openoffice.org</a></p>
+                            <p class="pub-authors">
+                                BANM Bambarasinghe, 
+                                HMS Huruggamuwa, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>, 
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/swarnalatha-radhakrishnan/" target="_blank">Swarnalatha Radhakrishnan</a>
+                            </p>
+                            <p class="pub-venue">2008 4th International Conference on Information and Automation for Sustainability, 2008</p>
+                            <p class="pub-doi">DOI: <a href="https://ieeexplore.ieee.org/document/4783956" target="_blank">10.1109/ICIAFS.2008.4783956</a></p>
+                            <div class="pub-links">
+                                <a href="https://arxiv.org/ftp/arxiv/papers/1402/1402.0670.pdf" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="year-section">
+                    <summary class="year-header">2006</summary>
+                    <div class="year-content">
+                        <div class="publication-item">
+                            <p class="pub-title">IMPRES: integrated monitoring for processor reliability and security</p>
+                            <p class="pub-authors">
+                                <a href="https://people.ce.pdn.ac.lk/staff/academic/roshan-ragel/" target="_blank">Roshan G Ragel</a>, 
+                                Sri Parameswaran
+                            </p>
+                            <p class="pub-venue">Proceedings of the 43rd annual Design Automation Conference, 2006</p>
+                            <p class="pub-doi">DOI: <a href="https://dl.acm.org/doi/10.1145/1146909.1147041" target="_blank">10.1145/1146909.1147041</a></p>
+                            <div class="pub-links">
+                                <a href="https://www.researchgate.net/publication/261279320_IMPRES_integrated_monitoring_for_processor_reliability_and_security" target="_blank" class="pub-link">PDF (Preprint)</a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Roshan G. Ragel. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
