@@ -125,6 +125,38 @@
             color: white;
         }
 
+        /* Loading State */
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner i {
+            font-size: 3rem;
+            color: #6495ED;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Update Info */
+        .update-info {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            padding: 0.5rem;
+        }
+
+        .update-info i {
+            color: #6495ED;
+            margin-right: 0.3rem;
+        }
+
         .note-section {
             background: rgba(212, 175, 55, 0.1);
             border-left: 4px solid var(--accent-gold);
@@ -199,7 +231,17 @@
 
         <!-- Projects Section -->
         <div class="content-section">
-            <div id="projectsContainer"></div>
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-spinner">
+                <i class="fas fa-spinner"></i>
+                <p style="margin-top: 1rem;">Loading projects data...</p>
+            </div>
+
+            <!-- Projects Container -->
+            <div id="projectsContainer" style="display: none;"></div>
+
+            <!-- Update Info -->
+            <div id="updateInfo" class="update-info" style="display: none;"></div>
 
             <!-- Note Section -->
             <div class="note-section">
@@ -220,74 +262,42 @@
 
     <script src="script.js"></script>
     <script>
-        // Project data from staff profile
-        const projectsData = {
-            "E19": [
-                { title: "A Behavioural Plugin Tool For Fake News Identification", url: "https://projects.ce.pdn.ac.lk/4yp/e19/A-Behavioural-Plugin-Tool-For-Fake-News-Identification/" },
-                { title: "AI Dirven Latency Constrained Resource Management In Kubernetes", url: "https://projects.ce.pdn.ac.lk/4yp/e19/AI-Dirven-Latency-Constrained-Resource-Management-In-Kubernetes/" },
-                { title: "AI Driven Decision Making Models for Corporate Applications", url: "https://projects.ce.pdn.ac.lk/4yp/e19/AI-Driven-Decision-Making-Models-for-Corporate-Applications/" },
-                { title: "AI Powered Knowledge Management System", url: "https://projects.ce.pdn.ac.lk/4yp/e19/AI-Powered-Knowledge-Management-System/" },
-                { title: "Classification of Motor Imagery EEG based Tasks for Brain Computer Interfacing Applications", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Classification-of-Motor-Imagery-EEG-based-Tasks-for-Brain-Computer-Interfacing-Applications/" },
-                { title: "Enhancing Multimodal Fusion Techniques for Depression Detection", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Enhancing-Multimodal-Fusion-Techniques-for-Depression-Detection/" },
-                { title: "LowComplexity Algorithms For EnergyEfficient Arrhythmia Classification In Wearable Devices", url: "https://projects.ce.pdn.ac.lk/4yp/e19/LowComplexity-Algorithms-For-EnergyEfficient-Arrhythmia-Classification-In-Wearable-Devices/" },
-                { title: "Peraswarm Active Localization and Navigation", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Peraswarm-Active-Localization-and-Navigation/" },
-                { title: "Putting Privacy into Practice", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Putting-Privacy-into-Practice/" },
-                { title: "Quality Assessment of Final Root Canal Treatment Using Intra Oral Periapical Radiographs", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Quality-Assessment-of-Final-Root-Canal-Treatment-Using-Intra-Oral-Periapical-Radiographs/" },
-                { title: "RISC V Based ASIP for Accelerating DNA Sequence Alignment on Embedded Systems", url: "https://projects.ce.pdn.ac.lk/4yp/e19/RISC-V-Based-ASIP-for-Accelerating-DNA-Sequence-Alignment-on-Embedded-Systems/" },
-                { title: "Solve Issues In Large Code Repositories", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Solve-Issues-In-Large-Code-Repositories/" },
-                { title: "Verilog Code Generation With Variations Fine Tuned Large Languag Models", url: "https://projects.ce.pdn.ac.lk/4yp/e19/Verilog-Code-Generation-With-Variations-Fine-Tuned-Large-Languag-Models/" }
-            ],
-            "E18": [
-                { title: "An Empirical Study On Prompt Injection Attacks And Defences", url: "https://projects.ce.pdn.ac.lk/4yp/e18/An-Empirical-Study-On-Prompt-Injection-Attacks-And-Defences/" },
-                { title: "Automated Medical Image Annotation for Dataset Building", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Automated-Medical-Image-Annotation-for-Dataset-Building/" },
-                { title: "DL Based Stereo Matching Estimation", url: "https://projects.ce.pdn.ac.lk/4yp/e18/DL-Based-Stereo-Matching-Estimation/" },
-                { title: "Extending and Implementing Process Mining Techniques Prevention and Mitigation", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Extending-and-Implementing-Process-Mining-Techniques-Prevention-and-Mitigation/" },
-                { title: "GPU Acceleration for Deep Learning based Comprehensive ECG analysis", url: "https://projects.ce.pdn.ac.lk/4yp/e18/GPU-Acceleration-for-Deep-Learning-based-Comprehensive-ECG-analysis/" },
-                { title: "Generating Patient Clinical Letters Using LLMs", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Generating-Patient-Clinical-Letters-Using-LLMs/" },
-                { title: "Machine Vision For Quality Inspection", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Machine-Vision-For-Quality-Inspection/" },
-                { title: "Neuromorphic NoC Architecture for SNNs", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Neuromorphic-NoC-Architecture-for-SNNs/" },
-                { title: "PeraSwarm Simultaneous Localization and Mapping in Mixed Reality Environment", url: "https://projects.ce.pdn.ac.lk/4yp/e18/PeraSwarm-Simultaneous-Localization-and-Mapping-in-Mixed-Reality-Environment/" },
-                { title: "Using AI in determining alveolar bone loss in Dental X rays to aid in periodontal diagnosis", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Using-AI-in-determining-alveolar-bone-loss-in-Dental-X-rays-to-aid-in-periodontal-diagnosis/" },
-                { title: "Virtual Patient Simulator for Skill Training in Dentistry", url: "https://projects.ce.pdn.ac.lk/4yp/e18/Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry/" }
-            ],
-            "E17": [
-                { title: "Acceleration of deep neural network based nanopore super accuracy basecalling", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Acceleration-of-deep-neural-network-based-nanopore-super-accuracy-basecalling/" },
-                { title: "Comprehensive ECG analysis with Deep Learning on GPU accelerators", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Comprehensive-ECG-analysis-with-Deep-Learning-on-GPU-accelerators/" },
-                { title: "Improving Trajectory Guided Control Prediction for Autonomous Driving", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Improving-Trajectory-Guided-Control-Prediction-for-Autonomous-Driving/" },
-                { title: "Large Language Models in Education", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Large-Language-Models-in-Education/" },
-                { title: "Low Complexity Algorithm for Arrhythmia Detection", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Low-Complexity-Algorithm-for-Arrhythmia-Detection/" },
-                { title: "Music Emotion Recognition", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Music-Emotion-Recognition/" },
-                { title: "Neuromorphic NoC Architecture for SNNs", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Neuromorphic-NoC-Architecture-for-SNNs/" },
-                { title: "OCR and Translation from Sinhala to Tamil for Printed Documents", url: "https://projects.ce.pdn.ac.lk/4yp/e17/OCR-and-Translation-from-Sinhala-to-Tamil-for-Printed-Documents/" },
-                { title: "S2TPVFormer", url: "https://projects.ce.pdn.ac.lk/4yp/e17/S2TPVFormer/" },
-                { title: "Virtual Patient Simulator for Skill Training in Dentistry", url: "https://projects.ce.pdn.ac.lk/4yp/e17/Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry/" },
-                { title: "develop a programming and compiler toolchain for multi agent systems", url: "https://projects.ce.pdn.ac.lk/4yp/e17/develop-a-programming-and-compiler-toolchain-for-multi-agent-systems/" },
-                { title: "network anomaly detection", url: "https://projects.ce.pdn.ac.lk/4yp/e17/network-anomaly-detection/" },
-                { title: "novel compression methods for nanopore raw signal data", url: "https://projects.ce.pdn.ac.lk/4yp/e17/novel-compression-methods-for-nanopore-raw-signal-data/" }
-            ],
-            "E16": [
-                { title: "Acceleration of DTW algorithm for real time nanopore selective sequencing using GPUs", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Acceleration-of-DTW-algorithm-for-real-time-nanopore-selective-sequencing-using-GPUs/" },
-                { title: "Enhancing Video Game Experience With Brain Computer Interface", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Enhancing-Video-Game-Experience-With-Brain-Computer-Interface/" },
-                { title: "Hardware Cache Switching with Operating System Context Switches", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Hardware-Cache-Switching-with-Operating-System-Context-Switches/" },
-                { title: "Human Animal Emotion Detection Using ECG and ML Techniques", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Human-Animal-Emotion-Detection-Using-ECG-and-ML-Techniques/" },
-                { title: "Smart Agriculture Use of Computer Vision ML and IoT to Improve Crop Productivity", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Smart-Agriculture-Use-of-Computer-Vision-ML-and-IoT-to-Improve-Crop-Productivity/" },
-                { title: "Virtual Patient Simulator for Skill Training in Dentistry", url: "https://projects.ce.pdn.ac.lk/4yp/e16/Virtual-Patient-Simulator-for-Skill-Training-in-Dentistry/" },
-                { title: "constructing quantum safe leakage resilient public key encryption scheme", url: "https://projects.ce.pdn.ac.lk/4yp/e16/constructing-quantum-safe-leakage-resilient-public-key-encryption-scheme/" },
-                { title: "neuromorphic architecture", url: "https://projects.ce.pdn.ac.lk/4yp/e16/neuromorphic-architecture/" },
-                { title: "open world object detection and discovery", url: "https://projects.ce.pdn.ac.lk/4yp/e16/open-world-object-detection-and-discovery/" },
-                { title: "post quantum cryptographic schemes based on plain lattices", url: "https://projects.ce.pdn.ac.lk/4yp/e16/post-quantum-cryptographic-schemes-based-on-plain-lattices/" },
-                { title: "swarm intelligence programming framework", url: "https://projects.ce.pdn.ac.lk/4yp/e16/swarm-intelligence-programming-framework/" }
-            ],
-            "E15": [
-                { title: "Accelerating Adaptive Banded Event Alignment Algorithm with OpenCL on FPGA", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Accelerating-Adaptive-Banded-Event-Alignment-Algorithm-with-OpenCL-on-FPGA/" },
-                { title: "Brain Computer Interface for controlling virtual objects", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Brain-Computer-Interface-for-controlling-virtual-objects/" },
-                { title: "Hand Gesture Recognition using sEMG", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Hand-Gesture-Recognition-using-sEMG/" },
-                { title: "Mixed Reality based Simulation Platform for Swarm Robotics", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Mixed-Reality-based-Simulation-Platform-for-Swarm-Robotics/" },
-                { title: "Real Time Emotion Recognition using Electrocardiogram Analysis", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Real-Time-Emotion-Recognition-using-Electrocardiogram-Analysis/" },
-                { title: "Revealing miRNA Biomarkers for Alzheimer s Disease using NGS", url: "https://projects.ce.pdn.ac.lk/4yp/e15/Revealing-miRNA-Biomarkers-for-Alzheimer-s-Disease-using-NGS/" },
-                { title: "nearIR spectroscopy", url: "https://projects.ce.pdn.ac.lk/4yp/e15/nearIR-spectroscopy/" }
-            ]
-        };
+        // ========================================
+        // REAL API - Fetches from GitHub JSON file
+        // JSON is auto-updated daily by GitHub Actions
+        // ========================================
+
+        let projectsData = {};
+        let lastUpdated = '';
+
+        // Fetch projects data from JSON file
+        async function fetchProjectsData() {
+            try {
+                console.log('🚀 Fetching projects data from JSON...');
+                
+                // Fetch the JSON file (generated by GitHub Actions)
+                const response = await fetch('projects-data.json?v=' + Date.now()); // Cache bust
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('✅ Successfully loaded projects data');
+                console.log('📊 Data:', data);
+                
+                projectsData = data.projects;
+                lastUpdated = data.last_updated;
+                
+                displayProjects();
+                displayUpdateInfo(data);
+                hideLoading();
+                
+            } catch (error) {
+                console.error('❌ Error loading projects:', error);
+                showError();
+            }
+        }
 
         // Display projects
         function displayProjects() {
@@ -295,6 +305,12 @@
             let html = '';
 
             const batches = Object.keys(projectsData).sort().reverse();
+
+            if (batches.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No projects found.</p>';
+                container.style.display = 'block';
+                return;
+            }
 
             batches.forEach((batch, index) => {
                 const projects = projectsData[batch];
@@ -325,6 +341,46 @@
             });
 
             container.innerHTML = html;
+            container.style.display = 'block';
+            
+            console.log(`✅ Displayed ${batches.reduce((sum, b) => sum + projectsData[b].length, 0)} projects across ${batches.length} batches`);
+        }
+
+        // Display update info
+        function displayUpdateInfo(data) {
+            const infoDiv = document.getElementById('updateInfo');
+            const date = new Date(data.last_updated);
+            const timeAgo = getTimeAgo(date);
+            
+            infoDiv.innerHTML = `
+                <i class="fas fa-sync-alt"></i>
+                Data automatically updated ${timeAgo} | 
+                ${data.total_projects} projects across ${data.total_batches} batches
+            `;
+            infoDiv.style.display = 'block';
+        }
+
+        // Get human-readable time ago
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            const intervals = {
+                year: 31536000,
+                month: 2592000,
+                week: 604800,
+                day: 86400,
+                hour: 3600,
+                minute: 60
+            };
+            
+            for (let [name, seconds_in_interval] of Object.entries(intervals)) {
+                const interval = Math.floor(seconds / seconds_in_interval);
+                if (interval >= 1) {
+                    return interval === 1 ? `1 ${name} ago` : `${interval} ${name}s ago`;
+                }
+            }
+            
+            return 'just now';
         }
 
         // Toggle batch section
@@ -333,8 +389,24 @@
             section.classList.toggle('open');
         }
 
-        // Initialize
-        window.addEventListener('DOMContentLoaded', displayProjects);
+        // Show/hide states
+        function hideLoading() {
+            document.getElementById('loadingState').style.display = 'none';
+        }
+
+        function showError() {
+            document.getElementById('loadingState').innerHTML = `
+                <i class="fas fa-exclamation-triangle" style="color: #ff5252;"></i>
+                <p style="margin-top: 1rem; color: #ff5252;">
+                    Unable to load projects data. Please try refreshing the page.
+                </p>
+            `;
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchProjectsData();
+        });
     </script>
 </body>
 </html>
