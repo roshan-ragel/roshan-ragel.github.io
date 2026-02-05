@@ -21,8 +21,8 @@
         /* Students Grid Styles */
         .students-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
             margin-top: 1.5rem;
         }
 
@@ -45,7 +45,7 @@
 
         .student-photo {
             width: 100%;
-            height: 280px;
+            height: 150px;
             overflow: hidden;
             background: #e0e0e0;
         }
@@ -57,48 +57,48 @@
         }
 
         .student-info {
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: left;
         }
 
         .student-info h4 {
             color: var(--light-teal);
-            font-size: 1.15rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.4rem 0;
         }
 
         .student-degree {
             color: #000000 !important;
             font-weight: 600;
-            font-size: 0.95rem;
-            margin: 0.5rem 0;
+            font-size: 0.8rem;
+            margin: 0.4rem 0;
         }
 
         .student-status {
             color: #666666 !important;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             margin: 0.3rem 0;
             font-style: italic;
         }
 
         .student-topic {
             color: #000000 !important;
-            font-size: 0.85rem;
-            margin: 0.5rem 0;
+            font-size: 0.75rem;
+            margin: 0.4rem 0;
             font-style: italic;
         }
 
         .student-supervision {
             color: #000000 !important;
-            font-size: 0.85rem;
-            margin: 0.5rem 0;
-            line-height: 1.6;
+            font-size: 0.75rem;
+            margin: 0.4rem 0;
+            line-height: 1.5;
         }
 
         .student-start-date {
             color: #666666 !important;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             margin: 0.3rem 0;
         }
 
@@ -146,13 +146,28 @@
             margin-top: 2rem;
         }
 
+        .batch-header {
+            color: var(--primary-teal);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 768px) {
             .students-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .student-photo {
-                height: 220px;
+                height: 120px;
+            }
+            
+            .student-info {
+                padding: 0.8rem;
+            }
+            
+            .student-info h4 {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -605,12 +620,12 @@
         <div class="content-section fade-in fade-in-delay-4">
             <h2 class="section-header">Undergraduate Students</h2>
             
+            <!-- E23 Batch -->
+            <h3 class="batch-header">E23 Batch</h3>
             <div class="students-grid">
-                <!-- Add undergraduate student cards here -->
-                <!-- Example card structure - replace with actual student data -->
                 <div class="student-card">
                     <div class="student-photo">
-                        <img src="students/placeholder.jpg" alt="Student Name" onerror="this.src='students/placeholder.jpg'">
+                        <img src="students/placeholder.jpg" alt="E23 Student" onerror="this.src='students/placeholder.jpg'">
                     </div>
                     <div class="student-info">
                         <h4>Student Name</h4>
@@ -619,9 +634,58 @@
                         <p class="student-supervision">Co-supervised with [Supervisor Name]</p>
                     </div>
                 </div>
+                <!-- Add more E23 students here -->
+            </div>
 
-                <!-- Add more undergraduate student cards as needed -->
-                
+            <!-- E22 Batch -->
+            <h3 class="batch-header">E22 Batch</h3>
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="student-photo">
+                        <img src="students/placeholder.jpg" alt="E22 Student" onerror="this.src='students/placeholder.jpg'">
+                    </div>
+                    <div class="student-info">
+                        <h4>Student Name</h4>
+                        <p class="student-degree">Final Year Research Project (4YP)</p>
+                        <p class="student-topic">Project Title</p>
+                        <p class="student-supervision">Co-supervised with [Supervisor Name]</p>
+                    </div>
+                </div>
+                <!-- Add more E22 students here -->
+            </div>
+
+            <!-- E21 Batch -->
+            <h3 class="batch-header">E21 Batch</h3>
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="student-photo">
+                        <img src="students/placeholder.jpg" alt="E21 Student" onerror="this.src='students/placeholder.jpg'">
+                    </div>
+                    <div class="student-info">
+                        <h4>Student Name</h4>
+                        <p class="student-degree">Final Year Research Project (4YP)</p>
+                        <p class="student-topic">Project Title</p>
+                        <p class="student-supervision">Co-supervised with [Supervisor Name]</p>
+                    </div>
+                </div>
+                <!-- Add more E21 students here -->
+            </div>
+
+            <!-- E20 Batch -->
+            <h3 class="batch-header">E20 Batch</h3>
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="student-photo">
+                        <img src="students/placeholder.jpg" alt="E20 Student" onerror="this.src='students/placeholder.jpg'">
+                    </div>
+                    <div class="student-info">
+                        <h4>Student Name</h4>
+                        <p class="student-degree">Final Year Research Project (4YP)</p>
+                        <p class="student-topic">Project Title</p>
+                        <p class="student-supervision">Co-supervised with [Supervisor Name]</p>
+                    </div>
+                </div>
+                <!-- Add more E20 students here -->
             </div>
             
             <div style="background: rgba(26, 139, 139, 0.05); padding: 1.5rem; border-radius: 8px; margin-top: 2rem; border-left: 4px solid var(--primary-teal);">
