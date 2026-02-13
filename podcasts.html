@@ -161,6 +161,12 @@
             margin-bottom: 1.5rem;
         }
 
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -322,6 +328,10 @@
             .video-grid {
                 grid-template-columns: 1fr;
             }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         nav {
@@ -393,14 +403,22 @@
             </div>
         </div>
 
-        <!-- Featured Video (single large embed) -->
+        <!-- Featured Episodes (two side-by-side) -->
         <div class="video-embed">
             <h2>Featured Episode</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ncbdImdVWb4" 
-                        allowfullscreen 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                </iframe>
+            <div class="featured-grid">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/tHpicpe3k8g" 
+                            allowfullscreen 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                    </iframe>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ncbdImdVWb4" 
+                            allowfullscreen 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                    </iframe>
+                </div>
             </div>
         </div>
 
