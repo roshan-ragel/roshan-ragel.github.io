@@ -17,31 +17,40 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background: #1a1410;
         }
 
-        .hero-slides { position: absolute; inset: 0; z-index: 0; }
+        .hero-slides {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
 
+        /* IMPORTANT: opacity:0 by default, NO display:none
+           CSS transitions only work on visible elements */
         .hero-slide {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             opacity: 0;
             z-index: 0;
             transition: opacity 1.4s ease-in-out;
         }
+
+        /* Set background images directly in CSS — no JS image preloading needed */
+        #slide0 { background-image: url('hero-background.jpg'); }
+        #slide1 { background-image: url('hero-background2.jpg'); }
+        #slide2 { background-image: url('hero-background3.jpg'); }
+
         .hero-slide.leaving { opacity: 1; z-index: 1; }
         .hero-slide.active  { opacity: 1; z-index: 2; }
-
-        /* Fallback colour shown before any image loads */
-        .hero-slides {
-            background: #1a1410;
-        }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(15,12,10,0.62);
+            background: rgba(10, 8, 6, 0.55);
             z-index: 3;
         }
 
@@ -56,7 +65,7 @@
 
         .hero-comment {
             font-family: 'Courier New', monospace;
-            color: rgba(212,175,55,0.55);
+            color: rgba(212,175,55,0.65);
             font-size: 0.82rem;
             letter-spacing: 0.18em;
             margin-bottom: 1.6rem;
@@ -90,14 +99,14 @@
             margin: 1rem auto 1.5rem;
             animation: growDivider 0.8s ease forwards 1.6s;
         }
-        @keyframes growDivider { to { width:200px; } }
+        @keyframes growDivider { to { width: 200px; } }
 
         .hero-subtitle {
             font-family: 'Work Sans', sans-serif;
             font-size: clamp(0.85rem, 2vw, 1.15rem);
             font-weight: 300;
             letter-spacing: 0.32em;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,0.9);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -131,7 +140,7 @@
             font-size: 0.95rem;
             letter-spacing: 0.08em;
             transition: opacity 0.25s;
-            border-bottom: 1px solid rgba(212,175,55,0.35);
+            border-bottom: 1px solid rgba(212,175,55,0.4);
             padding-bottom: 2px;
         }
         .hero-email a:hover { opacity: 0.7; }
@@ -146,26 +155,21 @@
             bottom: 2.5rem; left: 50%;
             transform: translateX(-50%);
             z-index: 5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 6px;
             opacity: 0;
             animation: fadeIn 1s ease forwards 4.5s;
         }
         .hero-scroll span {
             font-family: 'Work Sans', sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            color: rgba(255,255,255,0.4);
-            text-transform: uppercase;
+            font-size: 0.65rem; letter-spacing: 0.25em;
+            color: rgba(255,255,255,0.5); text-transform: uppercase;
         }
         .scroll-mouse {
             width: 22px; height: 34px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.35);
             border-radius: 11px;
-            display: flex; justify-content: center;
-            padding-top: 5px;
+            display: flex; justify-content: center; padding-top: 5px;
         }
         .scroll-wheel {
             width: 3px; height: 7px;
@@ -186,9 +190,9 @@
             animation: fadeIn 1s ease forwards 4.5s;
         }
         .hero-dot {
-            width: 6px; height: 6px;
+            width: 8px; height: 8px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.35);
             cursor: pointer;
             transition: background 0.3s, transform 0.3s;
         }
@@ -217,8 +221,8 @@
 
     <section class="hero">
 
-        <div class="hero-slides" id="heroSlides">
-            <div class="hero-slide" id="slide0"></div>
+        <div class="hero-slides">
+            <div class="hero-slide active" id="slide0"></div>
             <div class="hero-slide" id="slide1"></div>
             <div class="hero-slide" id="slide2"></div>
         </div>
@@ -244,9 +248,9 @@
         </div>
 
         <div class="hero-dots" id="heroDots">
-            <div class="hero-dot" id="dot0" onclick="goToSlide(0)"></div>
-            <div class="hero-dot" id="dot1" onclick="goToSlide(1)"></div>
-            <div class="hero-dot" id="dot2" onclick="goToSlide(2)"></div>
+            <div class="hero-dot active" onclick="goToSlide(0)"></div>
+            <div class="hero-dot" onclick="goToSlide(1)"></div>
+            <div class="hero-dot" onclick="goToSlide(2)"></div>
         </div>
 
     </section>
@@ -258,9 +262,9 @@
     <script src="script.js"></script>
     <script>
 
-    /* ═══════════════════════════════════════════════════════════
-       1. TYPEWRITER — cursor blinks forever via pure CSS only
-    ═══════════════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       1. TYPEWRITER
+    ═══════════════════════════════════════════ */
     (function () {
         const PHRASES = [
             "EDUCATOR · RESEARCHER · LEADER",
@@ -270,33 +274,31 @@
         ];
         const textEl  = document.getElementById('typedText');
         const emailEl = document.getElementById('heroEmail');
-        const START_DELAY = 1800, TYPE_SPEED = 65, ERASE_SPEED = 35,
-              HOLD_AFTER  = 2000, PAUSE_BETWEEN = 500;
-        let emailShown = false;
         const delay = ms => new Promise(r => setTimeout(r, ms));
+        let emailShown = false;
 
         async function typePhrase(str) {
             for (let i = 1; i <= str.length; i++) {
                 textEl.textContent = str.slice(0, i);
-                await delay(TYPE_SPEED);
+                await delay(65);
             }
         }
         async function erasePhrase() {
             const s = textEl.textContent;
             for (let i = s.length - 1; i >= 0; i--) {
                 textEl.textContent = s.slice(0, i);
-                await delay(ERASE_SPEED);
+                await delay(35);
             }
         }
         async function run() {
-            await delay(START_DELAY);
+            await delay(1800);
             let idx = 0;
             while (true) {
                 await typePhrase(PHRASES[idx]);
                 if (!emailShown) { emailShown = true; emailEl.classList.add('visible'); }
-                await delay(HOLD_AFTER);
+                await delay(2000);
                 await erasePhrase();
-                await delay(PAUSE_BETWEEN);
+                await delay(500);
                 idx = (idx + 1) % PHRASES.length;
             }
         }
@@ -304,119 +306,43 @@
     })();
 
 
-    /* ═══════════════════════════════════════════════════════════
-       2. SLIDESHOW
-       ───────────────────────────────────────────────────────────
-       HOW IMAGES WORK:
-       ─────────────────
-       Put your own photos in the same folder as index.html and
-       name them:
-           hero-background.jpg
-           hero-background2.jpg
-           hero-background3.jpg
-
-       If a local file is missing, the slot automatically loads a
-       fallback from picsum.photos (works on GitHub Pages, no CORS
-       issues). So images ALWAYS show — even before you upload yours.
-
-       To change fallbacks, edit the `fallback` URLs below.
-    ═══════════════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       2. SLIDESHOW — simple, no preloading needed
+       Images are set in CSS directly so they always
+       load the same way the browser loads any image.
+    ═══════════════════════════════════════════ */
     (function () {
-
-        /* ── Image configuration ── */
-        const SOURCES = [
-            {
-                local:    'hero-background.jpg',
-                fallback: 'https://picsum.photos/id/1060/1600/900',   /* mountain landscape */
-                slide:    document.getElementById('slide0'),
-                dot:      document.getElementById('dot0')
-            },
-            {
-                local:    'hero-background2.jpg',
-                fallback: 'https://picsum.photos/id/1001/1600/900',   /* portrait / campus feel */
-                slide:    document.getElementById('slide1'),
-                dot:      document.getElementById('dot1')
-            },
-            {
-                local:    'hero-background3.jpg',
-                fallback: 'https://picsum.photos/id/1074/1600/900',   /* library / academic */
-                slide:    document.getElementById('slide2'),
-                dot:      document.getElementById('dot2')
-            }
-        ];
-
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots   = document.querySelectorAll('.hero-dot');
         const INTERVAL      = 5000;
         const TRANSITION_MS = 1400;
+        let current = 0;
 
-        let pending = SOURCES.length;
-        const good  = [];
+        function goToSlide(n) {
+            const prev = current;
+            current = ((n % slides.length) + slides.length) % slides.length;
+            if (prev === current) return;
 
-        /* For each slot: try local → fallback → skip */
-        SOURCES.forEach(function (entry) {
+            /* Outgoing stays visible underneath */
+            slides[prev].classList.remove('active');
+            slides[prev].classList.add('leaving');
+            dots[prev].classList.remove('active');
 
-            function tryLoad(src, onFail) {
-                const img = new Image();
-                img.onload  = function () { register(entry, src); };
-                img.onerror = onFail || function () { tick(); };
-                img.src = src;
-            }
+            /* Incoming fades in on top */
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
 
-            tryLoad(
-                entry.local,
-                function () { tryLoad(entry.fallback); }
-            );
-        });
-
-        function register(entry, src) {
-            entry.slide.style.backgroundImage = 'url("' + src + '")';
-            entry.slide.style.opacity = '0';   /* will be set by .active */
-            good.push(entry);
-            tick();
+            /* Drop leaving slide after transition */
+            setTimeout(function () {
+                slides[prev].classList.remove('leaving');
+            }, TRANSITION_MS);
         }
 
-        function tick() {
-            pending--;
-            if (pending === 0) start();
-        }
+        /* Expose for dot onclick */
+        window.goToSlide = goToSlide;
 
-        function start() {
-            if (good.length === 0) return; /* nothing loaded — nothing to do */
-
-            /* Show slide 0 immediately */
-            let current = 0;
-            good[0].slide.classList.add('active');
-            good[0].dot.classList.add('active');
-
-            if (good.length === 1) return; /* single image — keep forever */
-
-            function goTo(n) {
-                const prev = current;
-                current = ((n % good.length) + good.length) % good.length;
-                if (prev === current) return;
-
-                /* Outgoing: stay visible underneath */
-                good[prev].slide.classList.remove('active');
-                good[prev].slide.classList.add('leaving');
-                good[prev].dot.classList.remove('active');
-
-                /* Incoming: fade in on top */
-                good[current].slide.classList.add('active');
-                good[current].dot.classList.add('active');
-
-                /* Clean up after transition */
-                setTimeout(function () {
-                    good[prev].slide.classList.remove('leaving');
-                }, TRANSITION_MS);
-            }
-
-            /* Dot clicks — map source index to good[] position */
-            window.goToSlide = function (sourceIndex) {
-                const pos = good.findIndex(g => g === SOURCES[sourceIndex]);
-                if (pos !== -1) goTo(pos);
-            };
-
-            setInterval(function () { goTo(current + 1); }, INTERVAL);
-        }
+        /* Auto-advance every 5 seconds */
+        setInterval(function () { goToSlide(current + 1); }, INTERVAL);
 
     })();
 
