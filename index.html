@@ -59,7 +59,7 @@
             width: 100%;
         }
 
-        /* Code comment prefix  // Hello, World! style */
+        /* Code comment prefix */
         .hero-comment {
             font-family: 'Courier New', monospace;
             color: rgba(212, 175, 55, 0.55);
@@ -102,7 +102,7 @@
             to { width: 200px; }
         }
 
-        /* Subtitle row */
+        /* Subtitle row — fixed height so layout doesn't shift between phrases */
         .hero-subtitle {
             font-family: 'Work Sans', sans-serif;
             font-size: clamp(0.85rem, 2vw, 1.15rem);
@@ -121,16 +121,21 @@
             white-space: nowrap;
         }
 
-        /* Blinking cursor — pure CSS, runs forever independently */
+        /* ─────────────────────────────────────────────────────
+           CURSOR  — lives entirely in CSS, blinks forever.
+           It is NEVER touched by JS. No classList changes,
+           no style mutations, nothing — so it can never stall.
+        ───────────────────────────────────────────────────── */
         .cursor {
             display: inline-block;
             width: 2px;
             height: 1.1em;
             background-color: #d4af37;
-            margin-left: 5px;
+            margin-left: 4px;
             vertical-align: middle;
             border-radius: 1px;
-            /* infinite blink — no forwards, no fill-mode, just loops forever */
+
+            /* Pure CSS infinite blink — no fill-mode, no forwards */
             animation: blink 0.75s step-end infinite;
         }
         @keyframes blink {
@@ -141,10 +146,9 @@
         /* Email link */
         .hero-email {
             opacity: 0;
-            animation: fadeIn 0.9s ease forwards 0s; /* delay set by JS */
         }
         .hero-email.visible {
-            animation: fadeIn 0.9s ease forwards 0s;
+            animation: fadeIn 0.9s ease forwards;
         }
         .hero-email a {
             color: #d4af37;
@@ -281,6 +285,7 @@
             <!-- Typewriter subtitle + eternal blinking cursor -->
             <div class="hero-subtitle">
                 <span id="typedText"></span>
+                <!-- The cursor element is NEVER touched by JS — pure CSS blink forever -->
                 <span class="cursor"></span>
             </div>
 
@@ -316,58 +321,104 @@
     <script src="script.js"></script>
 
     <script>
-    /* ═══════════════════════════════════════════
-       1.  TYPEWRITER  — cursor blinks forever
-    ═══════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════════════════════
+       1.  TYPEWRITER ENGINE
+       ─────────────────────────────────────────────────────────────
+       Rules:
+         • Cursor is NEVER touched here — it blinks via pure CSS.
+         • Each phrase is typed out, held, then erased character-by-
+           character before the next phrase begins.
+         • After the first phrase completes, the email is revealed once.
+         • The loop runs forever.
+    ═══════════════════════════════════════════════════════════════ */
     (function () {
+
         const PHRASES = [
-            "EDUCATOR · RESEARCHER · LEADER"
+            "EDUCATOR · RESEARCHER · LEADER",
+            "PROFESSOR OF COMPUTER ENGINEERING",
+            "EMBEDDED SYSTEMS · COMPUTER ARCHITECTURE",
+            "INSPIRING THE NEXT GENERATION"
         ];
 
         const textEl  = document.getElementById('typedText');
         const emailEl = document.getElementById('heroEmail');
 
-        const START_DELAY  = 1800;   // wait for name animation
-        const CHAR_SPEED   = 60;     // ms per character
-        const EMAIL_DELAY  = 600;    // ms after typing finishes
+        const START_DELAY   = 1800;  // ms — wait for name animation to finish
+        const TYPE_SPEED    = 65;    // ms per character typed
+        const ERASE_SPEED   = 35;    // ms per character erased (faster feels natural)
+        const HOLD_AFTER    = 2000;  // ms — pause after full phrase is shown
+        const PAUSE_BETWEEN = 500;   // ms — gap between erase end and next type start
 
-        function type(str, cb) {
-            let i = 0;
-            function next() {
-                if (i <= str.length) {
-                    textEl.textContent = str.slice(0, i);
-                    i++;
-                    setTimeout(next, CHAR_SPEED);
-                } else if (cb) {
-                    cb();
-                }
-            }
-            next();
+        let emailShown = false;
+
+        /* ── helpers ── */
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        setTimeout(function () {
-            type(PHRASES[0], function () {
-                // typing done — show email
-                setTimeout(function () {
-                    emailEl.style.animation = 'fadeIn 0.9s ease forwards';
-                    emailEl.style.opacity   = '1';
-                }, EMAIL_DELAY);
-            });
-        }, START_DELAY);
-        // NOTE: The .cursor element has its own independent CSS animation
-        // (animation: blink 0.75s step-end infinite) — it never stops
-        // because it has NO forwards fill-mode and NO conflict with JS.
+        async function typePhrase(str) {
+            for (let i = 1; i <= str.length; i++) {
+                textEl.textContent = str.slice(0, i);
+                await delay(TYPE_SPEED);
+            }
+        }
+
+        async function erasePhrase() {
+            const current = textEl.textContent;
+            for (let i = current.length - 1; i >= 0; i--) {
+                textEl.textContent = current.slice(0, i);
+                await delay(ERASE_SPEED);
+            }
+        }
+
+        /* ── main loop ── */
+
+        async function run() {
+            await delay(START_DELAY);
+
+            let index = 0;
+
+            while (true) {
+                const phrase = PHRASES[index];
+
+                // Type it out
+                await typePhrase(phrase);
+
+                // Reveal email once, after the very first phrase is complete
+                if (!emailShown) {
+                    emailShown = true;
+                    emailEl.classList.add('visible');
+                }
+
+                // Hold so the reader can absorb it
+                await delay(HOLD_AFTER);
+
+                // Erase — but leave the last phrase visible on final iteration?
+                // No — we loop forever, so always erase.
+                await erasePhrase();
+
+                // Brief pause before next phrase
+                await delay(PAUSE_BETWEEN);
+
+                // Advance to next phrase, wrap around
+                index = (index + 1) % PHRASES.length;
+            }
+        }
+
+        run();
+
     })();
 
 
-    /* ═══════════════════════════════════════════
+    /* ═══════════════════════════════════════════════════════════════
        2.  BACKGROUND SLIDESHOW
-    ═══════════════════════════════════════════ */
+    ═══════════════════════════════════════════════════════════════ */
     (function () {
-        const slides    = document.querySelectorAll('.hero-slide');
-        const dots      = document.querySelectorAll('.hero-dot');
-        let   current   = 0;
-        const INTERVAL  = 5000;   // 5 s per slide
+        const slides   = document.querySelectorAll('.hero-slide');
+        const dots     = document.querySelectorAll('.hero-dot');
+        let   current  = 0;
+        const INTERVAL = 5000;
 
         function goToSlide(n) {
             slides[current].classList.remove('active');
@@ -377,7 +428,6 @@
             dots[current].classList.add('active');
         }
 
-        // expose for onclick
         window.goToSlide = goToSlide;
 
         setInterval(function () {
