@@ -3,37 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshan G. Ragel |  EDUCATOR  · RESEARCHER ·  LEADER</title>
+    <title>Roshan G. Ragel | EDUCATOR · RESEARCHER · LEADER</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Hero section with background image */
+        /* ── Hero background ── */
         .hero {
-            background-image: url('hero-background.jpg'); /* Replace with your image filename */
+            background-image: url('hero-background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
         }
-
-        /* Dark overlay for better text readability */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 22, 18, 0.75); /* Dark overlay */
+            inset: 0;
+            background: rgba(26, 22, 18, 0.75);
             z-index: 0;
         }
-
-        /* Ensure content appears above overlay */
         .hero-content {
             position: relative;
             z-index: 1;
+        }
+
+        /* ── Name: fade + slide up ── */
+        .hero-name {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.9s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Subtitle typewriter ── */
+        .hero-subtitle {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #d4af37; /* gold cursor */
+            width: 0;
+            opacity: 0;
+            animation:
+                revealSubtitle 0s ease forwards 1.1s,   /* make visible */
+                typeSubtitle 1.6s steps(28, end) forwards 1.1s, /* type it */
+                blinkCursor 0.75s step-end infinite 2.7s; /* blink after done */
+        }
+
+        @keyframes revealSubtitle {
+            to { opacity: 1; }
+        }
+        @keyframes typeSubtitle {
+            to { width: 100%; }
+        }
+        @keyframes blinkCursor {
+            0%, 100% { border-color: #d4af37; }
+            50%       { border-color: transparent; }
+        }
+
+        /* ── Email: fade in after subtitle finishes ── */
+        .hero-email {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 3.0s;
+        }
+        .hero-email a {
+            color: #d4af37;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+        }
+        .hero-email a:hover { opacity: 0.75; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ── Optional: subtle gold underline on the name ── */
+        .hero-name-line {
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            margin: 0.4rem auto 1.4rem;
+            animation: growLine 0.7s ease forwards;
+            animation-delay: 1.0s;
+        }
+        @keyframes growLine {
+            to { width: 120px; }
         }
     </style>
 </head>
@@ -51,20 +114,31 @@
                 <li><a href="videos.html">Videos</a></li>
                 <li><a href="speaking.html">Speaking</a></li>
                 <li><a href="presentation.html">Presentation</a></li>
-                 <li><a href="students.html">Students</a></li>
-               
+                <li><a href="students.html">Students</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section with Background Image -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>ROSHAN G. RAGEL</h1>
-            <h2>EDUCATOR  · RESEARCHER ·  LEADER</h2>
-            <div class="hero-social">
-                <a href="mailto:roshanr@pdn.ac.lk">roshanr@eng.pdn.ac.lk</a>
+
+            <!-- Name fades + slides up -->
+            <h1 class="hero-name">ROSHAN G. RAGEL</h1>
+
+            <!-- Gold accent line grows under the name -->
+            <span class="hero-name-line"></span>
+
+            <!-- Subtitle types itself out -->
+            <h2>
+                <span class="hero-subtitle">EDUCATOR · RESEARCHER · LEADER</span>
+            </h2>
+
+            <!-- Email fades in last -->
+            <div class="hero-social hero-email">
+                <a href="mailto:roshanr@eng.pdn.ac.lk">roshanr@eng.pdn.ac.lk</a>
             </div>
+
         </div>
     </section>
 
