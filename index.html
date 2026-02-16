@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* ── Hero background ── */
         .hero {
             background-image: url('hero-background.jpg');
             background-size: cover;
@@ -29,48 +28,70 @@
             z-index: 1;
         }
 
-        /* ── Name: fade + slide up ── */
+        /* Name: fade + slide up */
         .hero-name {
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeUp 0.9s ease forwards;
-            animation-delay: 0.2s;
+            animation: fadeUp 0.9s ease forwards 0.2s;
         }
-
         @keyframes fadeUp {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Subtitle typewriter ── */
-        .hero-subtitle {
-            display: inline-block;
+        /* Gold accent line */
+        .hero-name-line {
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            margin: 0.4rem auto 1.4rem;
+            animation: growLine 0.7s ease forwards 1.0s;
+        }
+        @keyframes growLine {
+            to { width: 120px; }
+        }
+
+        /* Subtitle row */
+        .hero-subtitle-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* The text container — JS will type into it */
+        #typedText {
             overflow: hidden;
             white-space: nowrap;
-            border-right: 3px solid #d4af37; /* gold cursor */
-            width: 0;
             opacity: 0;
-            animation:
-                revealSubtitle 0s ease forwards 1.1s,   /* make visible */
-                typeSubtitle 1.6s steps(28, end) forwards 1.1s, /* type it */
-                blinkCursor 0.75s step-end infinite 2.7s; /* blink after done */
+            transition: opacity 0.01s;
         }
 
-        @keyframes revealSubtitle {
-            to { opacity: 1; }
+        /* Cursor — controlled entirely by JS class toggling */
+        #typedCursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #d4af37;
+            margin-left: 5px;
+            vertical-align: middle;
+            opacity: 0;                    /* hidden until JS starts */
         }
-        @keyframes typeSubtitle {
-            to { width: 100%; }
+        /* The blink class is added by JS after typing */
+        #typedCursor.blink {
+            animation: cursorBlink 0.75s step-end infinite;
         }
-        @keyframes blinkCursor {
-            0%, 100% { border-color: #d4af37; }
-            50%       { border-color: transparent; }
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
         }
 
-        /* ── Email: fade in after subtitle finishes ── */
+        /* Email fades in after typing */
         .hero-email {
             opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 3.0s;
+            transition: opacity 0.8s ease;
+        }
+        .hero-email.visible {
+            opacity: 1;
         }
         .hero-email a {
             color: #d4af37;
@@ -81,27 +102,13 @@
         }
         .hero-email a:hover { opacity: 0.75; }
 
+        /* Name line fade */
         @keyframes fadeIn {
             to { opacity: 1; }
-        }
-
-        /* ── Optional: subtle gold underline on the name ── */
-        .hero-name-line {
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #d4af37;
-            margin: 0.4rem auto 1.4rem;
-            animation: growLine 0.7s ease forwards;
-            animation-delay: 1.0s;
-        }
-        @keyframes growLine {
-            to { width: 120px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-content">
             <a href="index.html" class="logo">Roshan G. Ragel</a>
@@ -119,34 +126,67 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
 
-            <!-- Name fades + slides up -->
             <h1 class="hero-name">ROSHAN G. RAGEL</h1>
-
-            <!-- Gold accent line grows under the name -->
             <span class="hero-name-line"></span>
 
-            <!-- Subtitle types itself out -->
             <h2>
-                <span class="hero-subtitle">EDUCATOR · RESEARCHER · LEADER</span>
+                <span class="hero-subtitle-wrap">
+                    <span id="typedText"></span>
+                    <span id="typedCursor"></span>
+                </span>
             </h2>
 
-            <!-- Email fades in last -->
-            <div class="hero-social hero-email">
+            <div class="hero-social hero-email" id="heroEmail">
                 <a href="mailto:roshanr@eng.pdn.ac.lk">roshanr@eng.pdn.ac.lk</a>
             </div>
 
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Roshan G. Ragel. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        (function () {
+            const text     = "EDUCATOR · RESEARCHER · LEADER";
+            const textEl   = document.getElementById('typedText');
+            const cursor   = document.getElementById('typedCursor');
+            const emailEl  = document.getElementById('heroEmail');
+
+            const TYPE_DELAY   = 1100;   // ms before typing starts
+            const CHAR_SPEED   = 55;     // ms per character
+            const EMAIL_DELAY  = 500;    // ms after last char before email appears
+
+            // Show cursor immediately when typing begins
+            setTimeout(function () {
+                textEl.style.opacity = '1';
+                cursor.style.opacity = '1';   // solid while typing
+
+                let i = 0;
+                function typeNext() {
+                    if (i < text.length) {
+                        textEl.textContent += text[i];
+                        i++;
+                        setTimeout(typeNext, CHAR_SPEED);
+                    } else {
+                        // Typing done → start infinite blink
+                        cursor.classList.add('blink');
+
+                        // Reveal email
+                        setTimeout(function () {
+                            emailEl.classList.add('visible');
+                        }, EMAIL_DELAY);
+                    }
+                }
+                typeNext();
+
+            }, TYPE_DELAY);
+        })();
+    </script>
 </body>
 </html>
