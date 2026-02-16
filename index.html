@@ -150,6 +150,96 @@
             to   { opacity:1; transform:translateY(0); }
         }
 
+        /* ═══════════════════════════════════════
+           SOCIAL LINKS
+        ═══════════════════════════════════════ */
+        .hero-socials {
+            margin-top: 1.6rem;
+            opacity: 0;
+        }
+        .hero-socials.visible {
+            animation: fadeIn 0.9s ease forwards 0.3s;
+        }
+
+        /* Thin divider between groups */
+        .social-divider {
+            width: 1px;
+            height: 22px;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 6px;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.25);
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .social-link svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+        .social-link:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: rgba(212,175,55,0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Tooltip */
+        .social-link::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15,12,8,0.92);
+            color: #d4af37;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            padding: 4px 8px;
+            border-radius: 3px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        .social-link:hover::after {
+            opacity: 1;
+        }
+
+        /* Label above groups */
+        .social-label {
+            display: block;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.22em;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
         .hero-scroll {
             position: absolute;
             bottom: 2.5rem; left: 50%;
@@ -240,6 +330,81 @@
             <div class="hero-email" id="heroEmail">
                 <a href="mailto:roshanr@eng.pdn.ac.lk">roshanr@eng.pdn.ac.lk</a>
             </div>
+
+            <!-- ═══ SOCIAL MEDIA LINKS ═══ -->
+            <div class="hero-socials" id="heroSocials">
+                <div class="social-links">
+
+                    <!-- Social Media Group -->
+                    <a href="https://www.linkedin.com/in/roshanragel/" target="_blank" rel="noopener" class="social-link" data-label="LinkedIn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.facebook.com/RoshanRagel/" target="_blank" rel="noopener" class="social-link" data-label="Facebook" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.instagram.com/ragelrg/" target="_blank" rel="noopener" class="social-link" data-label="Instagram" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.youtube.com/@roshragel" target="_blank" rel="noopener" class="social-link" data-label="YouTube" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://x.com/ragelrg" target="_blank" rel="noopener" class="social-link" data-label="X / Twitter" aria-label="X (Twitter)">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@roraray" target="_blank" rel="noopener" class="social-link" data-label="TikTok" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Divider between social and academic -->
+                    <span class="social-divider"></span>
+
+                    <!-- Academic Group -->
+                    <a href="https://scholar.google.com/citations?user=UTYj8usAAAAJ&hl=en" target="_blank" rel="noopener" class="social-link" data-label="Google Scholar" aria-label="Google Scholar">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.researchgate.net/profile/Roshan-Ragel" target="_blank" rel="noopener" class="social-link" data-label="ResearchGate" aria-label="ResearchGate">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.193 12.193 0 00-.346 2.23 12.33 12.33 0 00.14 2.235.95.95 0 01-.007.097c-.013.083-.015.17-.005.255l.003.018.003-.018a.972.972 0 00-.005-.255.964.964 0 01-.007-.097 12.33 12.33 0 00.14-2.235 12.193 12.193 0 00-.346-2.23c-.244-.744-.65-1.303-1.213-1.68C14.093.19 13.403 0 12.585 0h-1.16v4.8h1.065c.523 0 .944.176 1.264.528.32.352.48.804.48 1.357 0 .551-.16 1.003-.48 1.356-.32.352-.74.528-1.264.528h-1.065v1.2H12c.64 0 1.23.18 1.77.54.54.36.963.856 1.269 1.49.306.633.459 1.354.459 2.162 0 .808-.153 1.53-.459 2.162-.306.633-.729 1.128-1.269 1.49-.54.36-1.13.54-1.77.54H8.16V0H4.5C2.015 0 0 2.015 0 4.5v15C0 21.985 2.015 24 4.5 24h15c2.485 0 4.5-2.015 4.5-4.5v-15C24 2.015 21.985 0 19.5 0h-.086l.172.002zM8.16 6v3.6h3.265c.34 0 .614-.117.82-.35.207-.234.31-.536.31-.906 0-.37-.103-.672-.31-.906A1.064 1.064 0 0011.425 7H8.16V6z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://orcid.org/0000-0002-4511-2335" target="_blank" rel="noopener" class="social-link" data-label="ORCID" aria-label="ORCID">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.466 3.872-3.722 0-2.016-1.284-3.722-3.884-3.722h-2.285z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://dblp.org/pid/25/6238.html" target="_blank" rel="noopener" class="social-link" data-label="DBLP" aria-label="DBLP">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Custom DBLP-style book/database icon -->
+                            <path d="M2 3C2 1.895 2.895 1 4 1h12l6 6v13c0 1.105-.895 2-2 2H4c-1.105 0-2-.895-2-2V3zm2 0v18h14V8h-5V3H4zm9 0v4h4l-4-4zM7 11h10v1.5H7V11zm0 3h10v1.5H7V14zm0 3h7v1.5H7V17z"/>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+            <!-- ═══ END SOCIAL LINKS ═══ -->
+
         </div>
 
         <div class="hero-scroll">
@@ -272,8 +437,9 @@
             "EMBEDDED SYSTEMS · COMPUTER ARCHITECTURE",
             "INSPIRING THE NEXT GENERATION"
         ];
-        const textEl  = document.getElementById('typedText');
-        const emailEl = document.getElementById('heroEmail');
+        const textEl   = document.getElementById('typedText');
+        const emailEl  = document.getElementById('heroEmail');
+        const socialEl = document.getElementById('heroSocials');
         const delay = ms => new Promise(r => setTimeout(r, ms));
         let emailShown = false;
 
@@ -295,7 +461,11 @@
             let idx = 0;
             while (true) {
                 await typePhrase(PHRASES[idx]);
-                if (!emailShown) { emailShown = true; emailEl.classList.add('visible'); }
+                if (!emailShown) {
+                    emailShown = true;
+                    emailEl.classList.add('visible');
+                    socialEl.classList.add('visible');
+                }
                 await delay(2000);
                 await erasePhrase();
                 await delay(500);
