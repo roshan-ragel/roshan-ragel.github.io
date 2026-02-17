@@ -233,17 +233,13 @@
             margin-top: 2rem;
         }
 
-        /* About Content Section */
-        .about-content {
+        /* ── MAIN LAYOUT: Text left + Right panel ── */
+        .about-main {
             display: grid;
-            grid-template-columns: 1fr 280px;
+            grid-template-columns: 1fr 290px;
             gap: 2.5rem;
             margin-bottom: 3rem;
             align-items: start;
-        }
-
-        .about-text {
-            order: 1;
         }
 
         .about-text p {
@@ -252,20 +248,20 @@
             text-align: justify;
         }
 
-        .about-sidebar {
-            order: 2;
+        /* ── RIGHT PANEL: single frame ── */
+        .about-right-panel {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            border: 1px solid rgba(201, 158, 61, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
         }
 
+        /* Photo */
         .about-image {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 2px solid rgba(201, 158, 61, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             width: 100%;
+            line-height: 0;
             display: block;
             flex-shrink: 0;
         }
@@ -277,62 +273,68 @@
             object-fit: cover;
         }
 
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 3px solid var(--accent-gold);
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .about-image:hover::after {
-            opacity: 1;
-        }
-
-        .info-boxes-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            clear: both;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Major Positions Box */
-        .major-positions-box {
+        /* Each section inside the panel */
+        .panel-section {
+            padding: 1rem 1.2rem;
+            border-top: 1px solid rgba(201, 158, 61, 0.2);
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(201, 158, 61, 0.2);
-            border-radius: 8px;
-            padding: 1rem 1.2rem 1rem 1.5rem;
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
         }
 
-        .major-positions-box::before {
+        .panel-section::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
-            width: 3px;
+            width: 4px;
             height: 100%;
             background: linear-gradient(to bottom, var(--accent-gold), transparent);
         }
 
+        .panel-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.7rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(201, 158, 61, 0.2);
+        }
+
+        .panel-section-header i {
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+        }
+
+        .panel-section-header h3 {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .panel-section p {
+            margin: 0.3rem 0;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .panel-section p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .info-date {
+            color: var(--text-secondary) !important;
+            font-size: 0.8rem !important;
+            font-style: italic;
+        }
+
+        /* Major Positions list inside panel */
         .major-pos-list {
             display: flex;
             flex-direction: column;
-            gap: 0;
-            margin-top: 0.6rem;
-            max-height: 420px;
+            max-height: 380px;
             overflow-y: auto;
-            padding-right: 4px;
         }
 
         .major-pos-list::-webkit-scrollbar {
@@ -340,8 +342,7 @@
         }
 
         .major-pos-list::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05);
-            border-radius: 2px;
+            background: rgba(255,255,255,0.03);
         }
 
         .major-pos-list::-webkit-scrollbar-thumb {
@@ -352,8 +353,8 @@
         .major-pos-item {
             display: flex;
             flex-direction: column;
-            gap: 0.15rem;
-            padding: 0.6rem 0;
+            gap: 0.1rem;
+            padding: 0.5rem 0;
             border-bottom: 1px solid rgba(201, 158, 61, 0.1);
         }
 
@@ -362,91 +363,24 @@
         }
 
         .major-pos-title {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-primary);
             line-height: 1.4;
         }
 
         .major-pos-date {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--accent-gold);
             font-style: italic;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
-        /* Info Boxes */
-        .info-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(201, 158, 61, 0.2);
-            border-radius: 8px;
-            padding: 1rem 1.2rem 1rem 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .info-box::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent-gold), transparent);
-        }
-
-        .info-box:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(201, 158, 61, 0.4);
-            transform: translateX(4px);
-        }
-
-        .info-box-header {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.6rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid rgba(201, 158, 61, 0.2);
-        }
-
-        .info-box-header i {
-            color: var(--accent-gold);
-            font-size: 1rem;
-        }
-
-        .info-box-header h3 {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--accent-gold);
-            font-weight: 600;
-            letter-spacing: 0.03em;
-        }
-
-        .info-box p {
-            margin: 0.25rem 0;
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        .info-box p strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .info-date {
-            color: var(--text-secondary) !important;
-            font-size: 0.82rem !important;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
+        @media (max-width: 900px) {
+            .about-main {
                 grid-template-columns: 1fr;
             }
-            .about-sidebar {
-                position: static;
+            .about-right-panel {
                 max-width: 320px;
                 margin: 0 auto;
             }
@@ -482,7 +416,8 @@
     <main>
 
 
-        <div class="about-content fade-in">
+        <div class="about-main fade-in">
+            <!-- Left: Bio Text -->
             <div class="about-text">
                 <p>
                     Dr. Ragel was appointed a Senior Lecturer in Computer Engineering at the University of Peradeniya in December 2007 and has been a Professor since October 2017. 
@@ -514,110 +449,114 @@
                     This academic syndicate explores the opportunities and challenges of GenAI in Higher education based at the University of Peradeniya.
                 </p>
             </div>
-            <div class="about-sidebar">
+
+            <!-- Right: Photo + Current Position + Major Positions (one frame) -->
+            <div class="about-right-panel">
+
+                <!-- Photo -->
                 <div class="about-image">
                     <img src="roshan-ragel-photo.jpeg" alt="Prof. Roshan G. Ragel">
                 </div>
-                <div class="info-boxes-wrapper">
-                    <div class="major-positions-box">
-                        <div class="info-box-header">
-                            <i class="fas fa-star"></i>
-                            <h3>Major Positions</h3>
+
+                <!-- Current Position -->
+                <div class="panel-section">
+                    <div class="panel-section-header">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Current Position</h3>
+                    </div>
+                    <p><strong>Professor of Computer Engineering</strong></p>
+                    <p>University of Peradeniya</p>
+                    <p class="info-date">Since October 2017</p>
+                </div>
+
+                <!-- Major Positions -->
+                <div class="panel-section">
+                    <div class="panel-section-header">
+                        <i class="fas fa-star"></i>
+                        <h3>Major Positions</h3>
+                    </div>
+                    <div class="major-pos-list">
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Director, Staff Development Centre</span>
+                            <span class="major-pos-date">Aug 2025 – Present</span>
                         </div>
-                        <div class="major-pos-list">
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Director, Staff Development Centre</span>
-                                <span class="major-pos-date">Aug 2025 – Present</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Senior Treasurer, ACES</span>
-                                <span class="major-pos-date">Jul 2025 – Present</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Deputy Director, Multidisciplinary AI Research Centre</span>
-                                <span class="major-pos-date">Jun 2025 – Present · Jan 2024 – May 2025</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Professor (Computer Engineering), University of Peradeniya</span>
-                                <span class="major-pos-date">Oct 2017 – Present</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Consultant (CEO), Lanka Education and Research Network</span>
-                                <span class="major-pos-date">Jan 2017 – Present</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Asi@Connect Project (TEIN*CC)</span>
-                                <span class="major-pos-date">Chair, Steering Committee: Aug 2023 – Present</span>
-                                <span class="major-pos-date">Governor: Jan 2017 – Dec 2023</span>
-                                <span class="major-pos-date">Vice Chair, Steering Committee: Jun 2020 – Aug 2023</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Chairperson, Continuation Education &amp; Extension Education</span>
-                                <span class="major-pos-date">AAUP, University of Peradeniya · Jan 2025 – Present</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Subject Editor, Editorial Board – NSF Sri Lanka</span>
-                                <span class="major-pos-date">Jun 2025 – Present</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">UGC Standing Committee on Computing</span>
-                                <span class="major-pos-date">Apr 2022 – Mar 2025</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Head of Department, Computer Engineering, University of Peradeniya</span>
-                                <span class="major-pos-date">Apr 2022 – Mar 2025</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Senior Lecturer (Computer Engineering), University of Peradeniya</span>
-                                <span class="major-pos-date">Dec 2007 – Oct 2017</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Visiting Fellow (Research), University of New South Wales</span>
-                                <span class="major-pos-date">May'08–Aug'08, Sep'09–Dec'09, Jun'11–Aug'11, Feb'12–Aug'12, Feb'14–May'14, Oct'16–Dec'16, Nov'17–Dec'17, May'18–Aug'18</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Director, ICSU, University of Peradeniya</span>
-                                <span class="major-pos-date">Feb 2010 – Apr 2011 · May 2013 – Dec 2014</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Acting Head (Computer Engineering), University of Peradeniya</span>
-                                <span class="major-pos-date">Aug 2007 – Jan 2008</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Visiting Research Fellow, CSL – UIUC</span>
-                                <span class="major-pos-date">Apr 2005 – May 2005</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">PhD Student (CS &amp; Engineering), University of New South Wales</span>
-                                <span class="major-pos-date">Feb 2003 – Aug 2006</span>
-                            </div>
-
-                            <div class="major-pos-item">
-                                <span class="major-pos-title">Lecturer (Computer Engineering), University of Peradeniya</span>
-                                <span class="major-pos-date">Dec 2002 – Dec 2007</span>
-                            </div>
-
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Senior Treasurer, ACES</span>
+                            <span class="major-pos-date">Jul 2025 – Present</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Deputy Director, Multidisciplinary AI Research Centre</span>
+                            <span class="major-pos-date">Jun 2025 – Present · Jan 2024 – May 2025</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Professor (Computer Engineering), University of Peradeniya</span>
+                            <span class="major-pos-date">Oct 2017 – Present</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Consultant (CEO), Lanka Education and Research Network</span>
+                            <span class="major-pos-date">Jan 2017 – Present</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Asi@Connect Project – Chair, Steering Committee</span>
+                            <span class="major-pos-date">Aug 2023 – Present</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Asi@Connect Project – Governor</span>
+                            <span class="major-pos-date">Jan 2017 – Dec 2023</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Asi@Connect – Vice Chair, Steering Committee</span>
+                            <span class="major-pos-date">Jun 2020 – Aug 2023</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Chairperson, Continuation &amp; Extension Education, AAUP</span>
+                            <span class="major-pos-date">Jan 2025 – Present</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Subject Editor, Editorial Board – NSF Sri Lanka</span>
+                            <span class="major-pos-date">Jun 2025 – Present</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">UGC Standing Committee on Computing</span>
+                            <span class="major-pos-date">Apr 2022 – Mar 2025</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Head of Department, Computer Engineering</span>
+                            <span class="major-pos-date">Apr 2022 – Mar 2025</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Senior Lecturer, Computer Engineering, UOP</span>
+                            <span class="major-pos-date">Dec 2007 – Oct 2017</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Visiting Fellow (Research), UNSW</span>
+                            <span class="major-pos-date">8 visits: 2008 – 2018</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Director, ICSU, University of Peradeniya</span>
+                            <span class="major-pos-date">Feb 2010 – Apr 2011 · May 2013 – Dec 2014</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Acting Head, Computer Engineering, UOP</span>
+                            <span class="major-pos-date">Aug 2007 – Jan 2008</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Visiting Research Fellow, CSL – UIUC</span>
+                            <span class="major-pos-date">Apr 2005 – May 2005</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">PhD Student, CS &amp; Engineering, UNSW</span>
+                            <span class="major-pos-date">Feb 2003 – Aug 2006</span>
+                        </div>
+                        <div class="major-pos-item">
+                            <span class="major-pos-title">Lecturer, Computer Engineering, UOP</span>
+                            <span class="major-pos-date">Dec 2002 – Dec 2007</span>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div></div>
+        </div>
 
         <div class="content-section fade-in fade-in-delay-1">
             <h2>Educational Qualifications</h2>
