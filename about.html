@@ -77,314 +77,6 @@
             margin-bottom: 1.5rem;
             border-left: 3px solid var(--accent-gold);
         }
-
-        /* Rectangle Shape Enhancements */
-        .list-item {
-            position: relative;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(201, 158, 61, 0.2);
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .list-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent-gold), transparent);
-            border-radius: 8px 0 0 8px;
-        }
-
-        .list-item:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(201, 158, 61, 0.4);
-            transform: translateX(5px);
-        }
-
-        .card {
-            position: relative;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(201, 158, 61, 0.2);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, transparent 70%);
-            opacity: 0.1;
-            border-radius: 0 8px 0 100%;
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: var(--accent-gold);
-            transform: translateY(-5px);
-        }
-
-        .card:hover::before {
-            opacity: 0.2;
-        }
-
-        /* Section Headers with Rectangle Accent */
-        .content-section h2 {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .content-section h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 5px;
-            height: 70%;
-            background: var(--accent-gold);
-            border-radius: 2px;
-        }
-
-        /* Stats/Highlight Boxes */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(201, 158, 61, 0.1) 0%, rgba(201, 158, 61, 0.05) 100%);
-            border: 2px solid var(--accent-gold);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(201, 158, 61, 0.1) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .highlight-box h3 {
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .highlight-box p {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Achievement Badge Style */
-        .list-item h3 {
-            display: inline-block;
-            position: relative;
-            padding-right: 1rem;
-        }
-
-        .list-item h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-gold);
-            border-radius: 2px;
-        }
-
-        /* Date Tag Style */
-        .date {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(201, 158, 61, 0.15);
-            border: 1px solid rgba(201, 158, 61, 0.3);
-            border-radius: 4px;
-            font-size: 0.85rem;
-            color: var(--accent-gold);
-            margin: 0.5rem 0;
-        }
-
-        /* Grid Enhancement */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* ── MAIN LAYOUT: Text left + Right panel ── */
-        .about-main {
-            display: grid;
-            grid-template-columns: 1fr 290px;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        /* ── RIGHT PANEL: single frame ── */
-        .about-right-panel {
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(201, 158, 61, 0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-        }
-
-        /* Photo */
-        .about-image {
-            width: 100%;
-            line-height: 0;
-            display: block;
-            flex-shrink: 0;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* Each section inside the panel */
-        .panel-section {
-            padding: 1rem 1.2rem;
-            border-top: 1px solid rgba(201, 158, 61, 0.2);
-            background: rgba(255, 255, 255, 0.02);
-            position: relative;
-        }
-
-        .panel-section::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent-gold), transparent);
-        }
-
-        .panel-section-header {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.7rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid rgba(201, 158, 61, 0.2);
-        }
-
-        .panel-section-header i {
-            color: var(--accent-gold);
-            font-size: 0.95rem;
-        }
-
-        .panel-section-header h3 {
-            font-size: 0.9rem;
-            margin: 0;
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-
-        .panel-section p {
-            margin: 0.3rem 0;
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        .panel-section p strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .info-date {
-            color: var(--text-secondary) !important;
-            font-size: 0.8rem !important;
-            font-style: italic;
-        }
-
-        /* Major Positions list inside panel */
-        .major-pos-list {
-            display: flex;
-            flex-direction: column;
-            max-height: 380px;
-            overflow-y: auto;
-        }
-
-        .major-pos-list::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .major-pos-list::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.03);
-        }
-
-        .major-pos-list::-webkit-scrollbar-thumb {
-            background: rgba(201, 158, 61, 0.4);
-            border-radius: 2px;
-        }
-
-        .major-pos-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(201, 158, 61, 0.1);
-        }
-
-        .major-pos-item:last-child {
-            border-bottom: none;
-        }
-
-        .major-pos-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.4;
-        }
-
-        .major-pos-date {
-            font-size: 0.72rem;
-            color: var(--accent-gold);
-            font-style: italic;
-            line-height: 1.3;
-        }
-
-        @media (max-width: 900px) {
-            .about-main {
-                grid-template-columns: 1fr;
-            }
-            .about-right-panel {
-                max-width: 320px;
-                margin: 0 auto;
-            }
-        }
     </style>
 </head>
 <body class="about-page">
@@ -402,6 +94,7 @@
                 <li><a href="speaking.html">Speaking</a></li>
                 <li><a href="presentation.html">Presentation</a></li>
                 <li><a href="students.html">Students</a></li>
+                
             </ul>
         </div>
     </nav>
@@ -414,10 +107,7 @@
 
     <!-- Main Content -->
     <main>
-
-
-        <div class="about-main fade-in">
-            <!-- Left: Bio Text -->
+        <div class="about-content fade-in">
             <div class="about-text">
                 <p>
                     Dr. Ragel was appointed a Senior Lecturer in Computer Engineering at the University of Peradeniya in December 2007 and has been a Professor since October 2017. 
@@ -449,112 +139,8 @@
                     This academic syndicate explores the opportunities and challenges of GenAI in Higher education based at the University of Peradeniya.
                 </p>
             </div>
-
-            <!-- Right: Photo + Current Position + Major Positions (one frame) -->
-            <div class="about-right-panel">
-
-                <!-- Photo -->
-                <div class="about-image">
-                    <img src="roshan-ragel-photo.jpeg" alt="Prof. Roshan G. Ragel">
-                </div>
-
-                <!-- Current Position -->
-                <div class="panel-section">
-                    <div class="panel-section-header">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>Current Position</h3>
-                    </div>
-                    <p><strong>Professor of Computer Engineering</strong></p>
-                    <p>University of Peradeniya</p>
-                    <p class="info-date">Since October 2017</p>
-                </div>
-
-                <!-- Major Positions -->
-                <div class="panel-section">
-                    <div class="panel-section-header">
-                        <i class="fas fa-star"></i>
-                        <h3>Major Positions</h3>
-                    </div>
-                    <div class="major-pos-list">
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Director, Staff Development Centre</span>
-                            <span class="major-pos-date">Aug 2025 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Senior Treasurer, ACES</span>
-                            <span class="major-pos-date">Jul 2025 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Deputy Director, Multidisciplinary AI Research Centre</span>
-                            <span class="major-pos-date">Jun 2025 – Present · Jan 2024 – May 2025</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Professor (Computer Engineering), University of Peradeniya</span>
-                            <span class="major-pos-date">Oct 2017 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Consultant (CEO), Lanka Education and Research Network</span>
-                            <span class="major-pos-date">Jan 2017 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Asi@Connect Project – Chair, Steering Committee</span>
-                            <span class="major-pos-date">Aug 2023 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Asi@Connect Project – Governor</span>
-                            <span class="major-pos-date">Jan 2017 – Dec 2023</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Asi@Connect – Vice Chair, Steering Committee</span>
-                            <span class="major-pos-date">Jun 2020 – Aug 2023</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Chairperson, Continuation &amp; Extension Education, AAUP</span>
-                            <span class="major-pos-date">Jan 2025 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Subject Editor, Editorial Board – NSF Sri Lanka</span>
-                            <span class="major-pos-date">Jun 2025 – Present</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">UGC Standing Committee on Computing</span>
-                            <span class="major-pos-date">Apr 2022 – Mar 2025</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Head of Department, Computer Engineering</span>
-                            <span class="major-pos-date">Apr 2022 – Mar 2025</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Senior Lecturer, Computer Engineering, UOP</span>
-                            <span class="major-pos-date">Dec 2007 – Oct 2017</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Visiting Fellow (Research), UNSW</span>
-                            <span class="major-pos-date">8 visits: 2008 – 2018</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Director, ICSU, University of Peradeniya</span>
-                            <span class="major-pos-date">Feb 2010 – Apr 2011 · May 2013 – Dec 2014</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Acting Head, Computer Engineering, UOP</span>
-                            <span class="major-pos-date">Aug 2007 – Jan 2008</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Visiting Research Fellow, CSL – UIUC</span>
-                            <span class="major-pos-date">Apr 2005 – May 2005</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">PhD Student, CS &amp; Engineering, UNSW</span>
-                            <span class="major-pos-date">Feb 2003 – Aug 2006</span>
-                        </div>
-                        <div class="major-pos-item">
-                            <span class="major-pos-title">Lecturer, Computer Engineering, UOP</span>
-                            <span class="major-pos-date">Dec 2002 – Dec 2007</span>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="about-image">
+                <img src="roshan-ragel-photo.jpeg" alt="Prof. Roshan G. Ragel" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
 
@@ -703,135 +289,40 @@
         </div>
 
         <div class="content-section fade-in fade-in-delay-3">
-            <h2>Current Positions</h2>
-            <div class="list-item">
-                <h3>Director, Staff Development Centre</h3>
-                <p class="date">University of Peradeniya · August 2025 - Present</p>
-                <p>Leading professional development initiatives for faculty and staff across the university.</p>
-            </div>
-            <div class="list-item">
-                <h3>Senior Treasurer, ACES</h3>
-                <p class="date">Association of Computer Engineering Students · July 2025 - Present</p>
-                <p>Managing financial operations and strategic planning for the student association.</p>
-            </div>
-            <div class="list-item">
-                <h3>Deputy Director, Multidisciplinary AI Research Centre</h3>
-                <p class="date">University of Peradeniya · June 2025 - Present</p>
-                <p>Previously Deputy Director from January 2024 - May 2025. Leading multidisciplinary AI research initiatives and collaborations.</p>
-            </div>
-            <div class="list-item">
-                <h3>Subject Editor, Editorial Board</h3>
-                <p class="date">National Science Foundation, Sri Lanka · June 2025 - Present</p>
-                <p>Providing editorial oversight for scientific publications and research proposals.</p>
-            </div>
-            <div class="list-item">
-                <h3>Chairperson, Continuation Education & Extension Education</h3>
-                <p class="date">Standing Committee, AAUP, University of Peradeniya · January 2025 - Present</p>
-                <p>Leading initiatives in continuing education and community outreach programs.</p>
-            </div>
-            <div class="list-item">
-                <h3>Chair, Steering Committee</h3>
-                <p class="date">Asi@Connect Project (TEIN*CC) · August 2023 - Present</p>
-                <p>Leading strategic direction for regional research and education network. Previously Vice Chair (June 2020 - August 2023) and Governor (January 2017 - December 2023).</p>
-            </div>
+            <h2>Leadership Positions</h2>
             <div class="list-item">
                 <h3>Professor of Computer Engineering</h3>
                 <p class="date">University of Peradeniya · October 2017 - Present</p>
-                <p>Leading research initiatives and teaching advanced courses in computer engineering, IoT, AI/ML, and embedded systems.</p>
+                <p>Leading research initiatives and teaching advanced courses. Previously Senior Lecturer (December 2007 - October 2017).</p>
             </div>
             <div class="list-item">
-                <h3>Consultant Chief Executive Officer</h3>
-                <p class="date">Lanka Education and Research Network (LEARN) · January 2017 - Present</p>
-                <p>Leading the national NREN, launched Asi@Connect Project in Sri Lanka, representing Sri Lanka in regional and international forums.</p>
-            </div>
-        </div>
-
-        <div class="content-section fade-in fade-in-delay-3">
-            <h2>Previous Leadership Positions</h2>
-            <div class="list-item">
-                <h3>Head of Department</h3>
-                <p class="date">Department of Computer Engineering, University of Peradeniya · April 2022 - March 2025</p>
-                <p>Led departmental strategic planning, curriculum development, and research initiatives.</p>
+                <h3>Consulting Chief Executive Officer</h3>
+                <p class="date">Lanka Research and Education Network (LEARN) · 2017 - Present</p>
+                <p>Leading the national NREN, launched Asi@Connect Project in Sri Lanka (2017), represented Sri Lanka in Asi@Connect Governors meetings.</p>
             </div>
             <div class="list-item">
-                <h3>Standing Committee on Computing</h3>
-                <p class="date">University Grants Commission (UGC) of Sri Lanka · April 2022 - March 2025</p>
-                <p>Contributed to national policy development for computing education in Sri Lankan universities.</p>
+                <h3>Vice-Chair, Asi@Connect Steering Committee</h3>
+                <p class="date">2020 - Present</p>
+                <p>Council Member of Asia Pacific Advanced Network (APAN) since 2017, providing strategic direction for regional research and education networks.</p>
             </div>
-            <div class="list-item">
-                <h3>Director, Internet and Communication Services Unit (ICSU)</h3>
-                <p class="date">University of Peradeniya · February 2010 - April 2011, May 2013 - December 2014</p>
-                <p>Managed university-wide IT infrastructure and communication services.</p>
-            </div>
-            <div class="list-item">
-                <h3>Acting Head, Department of Computer Engineering</h3>
-                <p class="date">University of Peradeniya · August 2007 - January 2008</p>
-                <p>Provided interim leadership for the department during transitional period.</p>
-            </div>
-        </div>
-
-        <div class="content-section fade-in fade-in-delay-3">
-            <h2>Academic Career Timeline</h2>
-            <div class="list-item">
-                <h3>Senior Lecturer in Computer Engineering</h3>
-                <p class="date">University of Peradeniya · December 2007 - October 2017</p>
-                <p>Advanced teaching and research in computer engineering, embedded systems, and security.</p>
-            </div>
-            <div class="list-item">
-                <h3>Visiting Fellow (Research)</h3>
-                <p class="date">University of New South Wales · Multiple Visits (2008-2018)</p>
-                <p>Conducted collaborative research across eight extended visits: May-Aug 2008, Sep-Dec 2009, Jun-Aug 2011, Feb-Aug 2012, Feb-May 2014, Oct-Dec 2016, Nov-Dec 2017, May-Aug 2018.</p>
-            </div>
-            <div class="list-item">
-                <h3>Visiting Research Fellow</h3>
-                <p class="date">Coordinated Science Laboratory (CSL), University of Illinois at Urbana-Champaign (UIUC) · April 2005 - May 2005</p>
-                <p>Conducted advanced research in computer science and engineering.</p>
-            </div>
-            <div class="list-item">
-                <h3>PhD Student in Computer Science and Engineering</h3>
-                <p class="date">University of New South Wales · February 2003 - August 2006</p>
-                <p>Completed doctoral research in computer science and engineering.</p>
-            </div>
-            <div class="list-item">
-                <h3>Lecturer in Computer Engineering</h3>
-                <p class="date">University of Peradeniya · December 2002 - December 2007</p>
-                <p>Began academic career teaching undergraduate and graduate courses in computer engineering.</p>
-            </div>
-        </div>
-
-        <div class="content-section fade-in fade-in-delay-3">
-            <h2>National Leadership & Committee Memberships</h2>
             <div class="list-item">
                 <h3>Presidential Task Force for Education</h3>
-                <p class="date">Core Group Member for Higher Education · 2020</p>
-                <p>Contributed to national education policy development during COVID-19 pandemic.</p>
+                <p class="date">Core Group Member · 2020</p>
+                <p>Member of UGC Standing Committee on IT Infrastructure and Online Education, and committee for Virtual/Hybrid University development.</p>
             </div>
             <div class="list-item">
-                <h3>UGC Standing Committee</h3>
-                <p class="date">IT Infrastructure and Online Education</p>
-                <p>Member of committee focused on developing IT infrastructure and online education frameworks for Sri Lankan universities.</p>
-            </div>
-            <div class="list-item">
-                <h3>Virtual/Hybrid University Development</h3>
-                <p class="date">UGC-Appointed Committee</p>
-                <p>Contributing to the conceptualization and development of virtual and hybrid university models for Sri Lanka.</p>
-            </div>
-            <div class="list-item">
-                <h3>Presidential Committee - AI Strategy for Sri Lanka</h3>
-                <p class="date">Member</p>
-                <p>Member of committee formulated to develop national AI strategy in response to advancement of Generative AI.</p>
-            </div>
-            <div class="list-item">
-                <h3>AI Sri Lanka Initiative</h3>
-                <p class="date">Lead - Skills and Curricula Pillar · ICTA Sri Lanka</p>
-                <p>Leading the development of AI skills and curricula for national AI capacity building.</p>
+                <h3>AI Strategy Development</h3>
+                <p class="date">Multiple National Committees</p>
+                <p>Member of Presidential Committee to Formulate AI Strategy for Sri Lanka, worked with ICTA Sri Lanka on AI initiative, leads Skills and Curricula pillar.</p>
             </div>
             <div class="list-item">
                 <h3>Founder, AI Forum for Academics (AIFA)</h3>
                 <p class="date">University of Peradeniya</p>
-                <p>Founded academic syndicate to explore opportunities and challenges of GenAI in Higher Education.</p>
+                <p>Academic syndicate exploring opportunities and challenges of GenAI in Higher Education.</p>
             </div>
         </div>
+
+        
     </main>
 
     <!-- Footer -->
