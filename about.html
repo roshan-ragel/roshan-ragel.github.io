@@ -235,11 +235,9 @@
 
         /* About Content Section */
         .about-content {
-            display: grid;
-            grid-template-columns: 3fr 1.2fr;
-            gap: 3rem;
+            position: relative;
             margin-bottom: 3rem;
-            align-items: start;
+            overflow: hidden;
         }
 
         .about-text p {
@@ -249,8 +247,9 @@
         }
 
         .about-sidebar {
-            position: sticky;
-            top: 100px;
+            float: right;
+            width: 270px;
+            margin: 0 0 2rem 2.5rem;
             display: flex;
             flex-direction: column;
             gap: 0;
@@ -264,7 +263,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             width: 100%;
             line-height: 0;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .about-image img {
@@ -364,17 +363,14 @@
             font-style: italic;
         }
 
-        @media (max-width: 968px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
+        @media (max-width: 768px) {
             .about-sidebar {
-                position: static;
-                max-width: 420px;
-                margin: 0 auto;
+                float: none;
                 width: 100%;
+                margin: 0 0 2rem 0;
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
@@ -409,6 +405,58 @@
 
 
         <div class="about-content fade-in">
+            <div class="about-sidebar">
+                <div class="about-image">
+                    <img src="roshan-ragel-photo.jpeg" alt="Prof. Roshan G. Ragel">
+                </div>
+                
+                <!-- Quick Facts Boxes -->
+                <div class="info-boxes-wrapper">
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Current Position</h3>
+                    </div>
+                    <p><strong>Professor of Computer Engineering</strong></p>
+                    <p>University of Peradeniya</p>
+                    <p class="info-date">Since October 2017</p>
+                </div>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <i class="fas fa-award"></i>
+                        <h3>Latest Recognition</h3>
+                    </div>
+                    <p><strong>IEEE CS Mary Kenneth Keller Award 2025</strong></p>
+                    <p>First from Global South</p>
+                </div>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Publications</h3>
+                    </div>
+                    <p><strong>200+ Peer-Reviewed Articles</strong></p>
+                    <p>IoT, AI/ML, Bioinformatics, Wearable Computing</p>
+                </div>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <i class="fas fa-network-wired"></i>
+                        <h3>Leadership Role</h3>
+                    </div>
+                    <p><strong>Consultant CEO – LEARN</strong></p>
+                    <p>Chair, Asi@Connect Steering Committee</p>
+                    <p class="info-date">Since 2017</p>
+                </div>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <i class="fas fa-globe"></i>
+                        <h3>Research Visits</h3>
+                    </div>
+                    <p>UNSW Sydney (8 visits, 2008–2018)</p>
+                    <p>UIUC Illinois (2005)</p>
+                    <p>QUT Brisbane · ANU Canberra</p>
+                </div>
+                </div>
+            </div>
             <div class="about-text">
                 <p>
                     Dr. Ragel was appointed a Senior Lecturer in Computer Engineering at the University of Peradeniya in December 2007 and has been a Professor since October 2017. 
@@ -439,62 +487,6 @@
                     He is also a founder of the AI Forum for Academics (AIFA). 
                     This academic syndicate explores the opportunities and challenges of GenAI in Higher education based at the University of Peradeniya.
                 </p>
-            </div>
-            <div class="about-sidebar">
-                <div class="about-image">
-                    <img src="roshan-ragel-photo.jpeg" alt="Prof. Roshan G. Ragel">
-                </div>
-                
-                <!-- Quick Facts Boxes -->
-                <div class="info-boxes-wrapper">
-                <div class="info-box">
-                    <div class="info-box-header">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>Current Position</h3>
-                    </div>
-                    <p><strong>Professor of Computer Engineering</strong></p>
-                    <p>University of Peradeniya</p>
-                    <p class="info-date">Since October 2017</p>
-                </div>
-
-                <div class="info-box">
-                    <div class="info-box-header">
-                        <i class="fas fa-award"></i>
-                        <h3>Latest Recognition</h3>
-                    </div>
-                    <p><strong>IEEE CS Mary Kenneth Keller Award 2025</strong></p>
-                    <p>First from Global South</p>
-                </div>
-
-                <div class="info-box">
-                    <div class="info-box-header">
-                        <i class="fas fa-book-open"></i>
-                        <h3>Publications</h3>
-                    </div>
-                    <p><strong>200+ Peer-Reviewed Articles</strong></p>
-                    <p>IoT, AI/ML, Bioinformatics, Wearable Computing</p>
-                </div>
-
-                <div class="info-box">
-                    <div class="info-box-header">
-                        <i class="fas fa-network-wired"></i>
-                        <h3>Leadership Role</h3>
-                    </div>
-                    <p><strong>Consultant CEO – LEARN</strong></p>
-                    <p>Chair, Asi@Connect Steering Committee</p>
-                    <p class="info-date">Since 2017</p>
-                </div>
-
-                <div class="info-box">
-                    <div class="info-box-header">
-                        <i class="fas fa-globe"></i>
-                        <h3>Research Visits</h3>
-                    </div>
-                    <p>UNSW Sydney (8 visits, 2008–2018)</p>
-                    <p>UIUC Illinois (2005)</p>
-                    <p>QUT Brisbane · ANU Canberra</p>
-                </div>
-                </div>
             </div>
         </div>
 
