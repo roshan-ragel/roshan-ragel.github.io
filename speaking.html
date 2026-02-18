@@ -162,8 +162,6 @@
             margin: 0;
         }
 
-
-
         /* ── Expertise Grid (2-col) ── */
         .expertise-grid {
             display: grid;
@@ -271,6 +269,83 @@
             margin-bottom: 3rem;
         }
 
+        /* ── Google Calendar Embed ── */
+        .calendar-section {
+            margin-top: 2.5rem;
+        }
+
+        .calendar-embed-wrapper {
+            margin-top: 1.2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(38,198,218,0.25);
+            background: #f7fffe;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            position: relative;
+            min-height: 120px;
+        }
+
+        .calendar-embed-wrapper iframe {
+            display: block;
+            width: 100%;
+            border: none;
+        }
+
+        /* Loading shimmer while iframe loads */
+        .calendar-embed-wrapper::before {
+            content: '';
+            display: block;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #f0fdfd 25%, #e0f7fa 50%, #f0fdfd 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.6s infinite;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        .calendar-embed-wrapper iframe {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .calendar-overlay-msg {
+            padding: 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .calendar-status-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #26c6da;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #26c6da;
+            animation: pulse-dot 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.75); }
+        }
+
         /* ── Animations ── */
         .fade-in {
             opacity: 0;
@@ -311,6 +386,8 @@
             .topic-card { padding: 1.4rem; }
 
             .cta-box { padding: 1.8rem; }
+
+            .calendar-embed-wrapper iframe { height: 380px; }
         }
     </style>
 </head>
@@ -407,8 +484,6 @@
             </div>
         </div>
 
-
-
         <!-- ── Expertise Areas ── -->
         <div class="speaking-section fade-in">
             <h2 class="section-title">Areas of Speaking Expertise</h2>
@@ -475,7 +550,7 @@
                 <strong style="color:#26c6da;">For speaking inquiries and bookings:</strong>
             </p>
             <div class="cta-links">
-                <a href="mailto:roshanr@pdn.ac.lk" class="cta-link">
+                <a href="mailto:roshanr@eng.pdn.ac.lk" class="cta-link">
                     roshanr@eng.pdn.ac.lk →
                 </a>
             </div>
@@ -483,6 +558,42 @@
                 Please include your event details, preferred dates, and specific topics of interest 
                 in your initial inquiry. We will respond within 48 hours to discuss your requirements.
             </p>
+        </div>
+
+        <!-- ── Google Calendar Availability ── -->
+        <div class="calendar-section fade-in">
+            <div class="cta-box">
+                <h2 style="display:flex; align-items:center; gap:0.6rem;">
+                    <span style="font-size:1.3rem;">📅</span> Check Availability
+                </h2>
+                <p>
+                    View Prof. Ragel's live calendar below before reaching out. It reflects real-time 
+                    availability and updates automatically — no need to email just to check open dates.
+                </p>
+
+                <div class="calendar-status-bar">
+                    <span class="status-dot"></span>
+                    Live · Auto-updating · Sri Lanka Standard Time (IST, UTC+5:30)
+                </div>
+
+                <div class="calendar-embed-wrapper" id="calendarWrapper">
+                    <iframe
+                        id="calendarFrame"
+                        src="https://calendar.google.com/calendar/embed?src=roshanr%40eng.pdn.ac.lk&ctz=Asia%2FColombo&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=1&mode=MONTH&bgcolor=%23f7fffe&color=%2326c6da"
+                        width="100%"
+                        height="520"
+                        frameborder="0"
+                        scrolling="no"
+                        title="Prof. Ragel Availability Calendar"
+                        loading="lazy">
+                    </iframe>
+                </div>
+
+                <p class="cta-note" style="margin-top:1rem !important;">
+                    ⓘ Busy times appear as blocked events. Dates without entries are generally available — 
+                    contact <a href="mailto:roshanr@eng.pdn.ac.lk" style="color:#26c6da; font-weight:600;">roshanr@eng.pdn.ac.lk</a> to confirm and book.
+                </p>
+            </div>
         </div>
 
     </main>
@@ -504,6 +615,21 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Hide shimmer once calendar iframe loads
+        const calFrame = document.getElementById('calendarFrame');
+        if (calFrame) {
+            calFrame.addEventListener('load', () => {
+                const wrapper = document.getElementById('calendarWrapper');
+                if (wrapper) wrapper.style.animation = 'none';
+                // Remove the shimmer pseudo-element by adding a class
+                wrapper.classList.add('loaded');
+            });
+        }
     </script>
+    <style>
+        /* Stop shimmer after load */
+        .calendar-embed-wrapper.loaded::before { display: none; }
+    </style>
 </body>
 </html>
