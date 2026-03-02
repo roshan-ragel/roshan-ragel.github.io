@@ -1,4 +1,6 @@
-// Mobile menu toggle
+// =====================
+// MOBILE MENU TOGGLE
+// =====================
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     const btn = document.querySelector('.mobile-menu-btn');
@@ -7,7 +9,7 @@ function toggleMenu() {
     btn.setAttribute('aria-expanded', isOpen);
 }
 
-// Close mobile menu when clicking outside
+// Close mobile menu when clicking outside nav
 document.addEventListener('click', function(event) {
     const nav = document.querySelector('nav');
     const btn = document.querySelector('.mobile-menu-btn');
@@ -35,7 +37,9 @@ document.querySelectorAll('.nav-links a').forEach(function(link) {
     });
 });
 
-// Active navigation highlighting
+// =====================
+// ACTIVE NAV HIGHLIGHT
+// =====================
 document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -47,9 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Smooth scroll for anchor links (if any)
+// =====================
+// SMOOTH SCROLL
+// =====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -61,7 +67,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for fade-in animations
+// =====================
+// FADE-IN ANIMATIONS
+// =====================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -76,7 +84,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all fade-in elements
 document.querySelectorAll('.fade-in').forEach(el => {
     observer.observe(el);
 });
